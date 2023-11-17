@@ -1,5 +1,6 @@
 function moreDesignation() { 
-    document.getElementById("hideDesignation").innerHTML = "Expert coder in Codeforces<br>5 star coder in Codechef<br>Knight coder in Leetcode";
+    let text = "Knight coder in LeetCode<br>4 star coder in CodeChef<br>Specialist coder in Codeforces";
+    document.getElementById("hideDesignation").innerHTML = text;
 }
 
 function moreDescribe() { 

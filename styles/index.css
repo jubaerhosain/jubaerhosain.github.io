@@ -520,3 +520,8 @@ footer {
         margin-bottom: 50px;
     }
 }
+
+.see-more {
+    cursor: pointer;
+    color: #2b55cc;
+}
