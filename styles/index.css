@@ -533,3 +533,7 @@ footer {
     cursor: pointer;
     color: #2b55cc;
 }
+
+.skill-item {
+    color: var(--ternary);
+}
