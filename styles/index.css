@@ -404,11 +404,19 @@ h5::before {
     color: var(--info);
     text-decoration: underline;
 }
+
 .handle a {
     color: var(--mild);
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
+}
+
+.handle p {
+    color: var(--mild);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .contact-container {
