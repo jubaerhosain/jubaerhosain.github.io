@@ -647,4 +647,11 @@ footer {
         /* grid-template-rows: 1fr; */
         grid-area: header / sidebar;
     }
+
+    .grid-item {
+        padding: 8px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
 }
