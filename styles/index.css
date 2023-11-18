@@ -1,20 +1,20 @@
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
 
 /* color */
 :root {
     --primary: #1a253f;
-    --dark: #151A33;
+    --dark: #151a33;
     --secondary: #2b55cc;
     --info: #4d79f6;
     --ternary: #848db3;
     --pure: #eff2f9;
     --fade: #7081b9;
     --mild: #8997bd;
-    --footer: #212A4A;
+    --footer: #212a4a;
     --black: #060b1b;
     --twitter: #4ac7ec;
     --dribbble: #ff5da0;
@@ -33,12 +33,17 @@
 }
 
 body {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     background-color: var(--dark);
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
     line-height: 1;
 }
@@ -76,7 +81,7 @@ nav .inner .logo {
 }
 
 .logo a {
-    font-family: 'Fredericka the Great', cursive;
+    font-family: "Fredericka the Great", cursive;
 }
 
 .logo small {
@@ -100,7 +105,7 @@ nav .inner button {
     margin-right: 20px;
     align-items: center;
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 nav .inner button i {
@@ -127,11 +132,11 @@ nav .inner button i {
 .profile .left .picture img {
     width: 128px;
     height: 128px;
-    border-radius: 100px; 
+    border-radius: 100px;
     margin-left: 20px;
     margin-right: 20px;
     object-fit: cover;
-} 
+}
 
 .profile .left .picture span {
     background-color: var(--info);
@@ -173,12 +178,12 @@ nav .inner button i {
 
 .profile .right .contactinfo li {
     color: var(--ternary);
-    margin: .7rem;
+    margin: 0.7rem;
 }
 
 .profile .right .contactinfo li i {
-    font-size: 18px;;
-    margin-right: .3rem;
+    font-size: 18px;
+    margin-right: 0.3rem;
 }
 
 .profile .right .profile-link {
@@ -190,12 +195,12 @@ nav .inner button i {
 
 .profile .right .profile-link li {
     color: var(--ternary);
-    margin: .7rem;
+    margin: 0.7rem;
 }
 
 .profile .right .profile-link li i {
-    font-size: 38px;;
-    margin-right: .3rem;
+    font-size: 38px;
+    margin-right: 0.3rem;
     color: var(--pure);
 }
 
@@ -205,10 +210,15 @@ nav .inner button i {
 
 section {
     padding: 3rem;
-    margin-top: 50px; 
+    margin-top: 50px;
 }
 
-.about, .education-experience, .project-skill, .achivement, .online-judge-handle, .contact {
+.about,
+.education-experience,
+.project-skill,
+.achivement,
+.online-judge-handle,
+.contact {
     background-color: black;
 }
 
@@ -217,11 +227,16 @@ section {
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 2rem;
-    text-shadow: 0 0 1px rgba(40, 54, 95, 0,1);
+    text-shadow: 0 0 1px rgba(40, 54, 95, 0, 1);
 }
 
-.about h1::before, .education-experience h1::before, .project-skill h1::before, .achivement h1::before, .online-judge-handle h1::before, .contact h1::before {
-    content: '';
+.about h1::before,
+.education-experience h1::before,
+.project-skill h1::before,
+.achivement h1::before,
+.online-judge-handle h1::before,
+.contact h1::before {
+    content: "";
     margin-right: 15px;
     border-left: 6px solid var(--danger);
 }
@@ -258,17 +273,30 @@ section {
     color: var(--mild);
 }
 
-.schools h5, .jobs h5, .tasks h5, .awards h5 {
+.schools h5,
+.jobs h5,
+.tasks h5,
+.awards h5 {
     color: var(--fade);
     font-size: 15px;
     margin-bottom: 4px;
 }
 
-.schools p, .jobs p, .tasks p, .awards p {
+.tasks h3{
+    color: var(--fade);
+    font-size: 18px;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+.schools p,
+.jobs p,
+.tasks p,
+.awards p {
     color: var(--ternary);
     font-size: 15px;
     font-weight: 500;
-    letter-spacing: .1px;
+    letter-spacing: 0.1px;
 }
 
 .items {
@@ -277,13 +305,14 @@ section {
     margin-left: 15px;
 }
 
-.schools, .jobs {
+.schools,
+.jobs {
     border-left: 2px dotted var(--fade);
 }
 
 h5::before {
-    content: '';
-    position:absolute;
+    content: "";
+    position: absolute;
     left: 0;
     top: 2px;
     width: 6px;
@@ -310,7 +339,7 @@ h5::before {
 .tasks a {
     text-decoration: none;
     color: var(--info);
-    letter-spacing: .1px;
+    letter-spacing: 0.1px;
 }
 
 .tasks a:hover {
@@ -429,7 +458,7 @@ h5::before {
 .way {
     margin-top: 20px;
     display: flex;
-    align-items: center;   
+    align-items: center;
     margin-bottom: 15px;
 }
 
@@ -457,17 +486,20 @@ h5::before {
     margin-bottom: 10px;
 }
 
-.name-email div, .say div {
+.name-email div,
+.say div {
     display: flex;
     flex-direction: column;
 }
 
-.name-email label, .say label {
+.name-email label,
+.say label {
     color: var(--ternary);
     margin-bottom: 5px;
 }
 
-.name-email input, .say textarea {
+.name-email input,
+.say textarea {
     padding: 5px;
     background-color: transparent;
     border: 2px solid var(--mild);
@@ -480,12 +512,13 @@ h5::before {
     border: none;
     font-size: 15px;
     cursor: pointer;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     margin-top: 6px;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-.send button:hover, .inner button:hover {
+.send button:hover,
+.inner button:hover {
     background: var(--secondary);
 }
 
@@ -493,26 +526,35 @@ footer {
     color: var(--fade);
     background-color: var(--footer);
     text-align: center;
-    padding: .5rem;
+    padding: 0.5rem;
 }
 
 /* Media Queries */
-@media (max-width: 800px ) {
+@media (max-width: 800px) {
     section.profile {
         flex-direction: column;
         align-items: flex-start;
     }
-    
-    .edu-exp-container, .project-skill-container, .count-up-container, .oj-handle-container, .contact-container, .name-email {
+
+    .edu-exp-container,
+    .project-skill-container,
+    .count-up-container,
+    .oj-handle-container,
+    .contact-container,
+    .name-email {
         display: block;
     }
 
-    .education, .project, .count, .handle, .information {
+    .education,
+    .project,
+    .count,
+    .handle,
+    .information {
         margin-bottom: 50px;
     }
 }
 
-@media (max-width: 500px ) {
+@media (max-width: 500px) {
     .profile .left {
         flex-direction: column;
         align-items: flex-start;
@@ -537,3 +579,22 @@ footer {
 .skill-item {
     color: var(--ternary);
 }
+
+.project-item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-area: header / sidebar;
+}
+
+.grid-item {
+    border-radius: 5px;
+    padding: 15px;
+    margin: 6px;
+    background-color: var(--black);
+    border: var(--primary) 2px solid;
+}
+
+.grid-item:hover {
+    background-color: var(--footer);
+} 
