@@ -243,6 +243,7 @@ section {
 
 .describe {
     color: var(--ternary);
+    text-align: justify;
 }
 
 .inzamam {
@@ -282,6 +283,10 @@ section {
     margin-bottom: 4px;
 }
 
+.tasks h5 {
+    text-align: justify;
+}
+
 .tasks h3 {
     color: var(--fade);
     font-size: 18px;
@@ -303,6 +308,10 @@ section {
     position: relative;
     margin-top: 12px;
     margin-left: 15px;
+}
+
+.items h5 {
+    text-align: justify;
 }
 
 .schools,
