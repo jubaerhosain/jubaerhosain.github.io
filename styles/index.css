@@ -526,7 +526,10 @@ h5::before {
     transition: all 0.3s ease-in-out;
 }
 
-.send button:hover,
+.send button:hover {
+    cursor: not-allowed;
+}
+
 .inner button:hover {
     background: var(--secondary);
 }
