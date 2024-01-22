@@ -688,14 +688,14 @@ footer {
         border: var(--footer) 1px solid;
         padding-top: 15px;
         padding-bottom: 15px;
-        border-radius: 20px;
+        /* border-radius: 20px; */
     }
 
     .profile .right {
         border: var(--footer) 1px solid;
         padding-top: 10px;
         padding-bottom: 10px;
-        border-radius: 20px;
+        /* border-radius: 20px; */
     }
 
     .profile ul {
