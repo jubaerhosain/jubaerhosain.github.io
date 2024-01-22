@@ -573,6 +573,18 @@ footer {
         margin-bottom: 50px;
     }
 
+    .profile,
+    .about,
+    .education-experience,
+    .project-skill,
+    .achivement,
+    .count-up,
+    .online-judge-handle,
+    .contact {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
     .inner {
         flex-direction: column;
         align-items: flex-start;
