@@ -246,7 +246,7 @@ section {
     text-align: justify;
 }
 
-.inzamam {
+.jubaer {
     color: var(--info);
     margin-bottom: 10px;
 }
@@ -642,7 +642,7 @@ footer {
 
 .grid-item:hover {
     background-color: var(--footer);
-    border: none;
+    /* border: none; */
 }
 
 @media (max-width: 1075px) {
@@ -734,4 +734,41 @@ footer {
     .profile .right {
         flex: 3;
     }
+}
+
+.card {
+    max-width: 300px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(224, 218, 218, 0.1);
+    /* border-radius: 8px; */
+    padding: 5px;
+    margin: auto;
+}
+
+.card img {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.card .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    flex-direction: column;
+}
+
+.card a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.card a:hover {
+    text-decoration: underline
 }
