@@ -6,14 +6,14 @@
 
 /* color */
 :root {
-    --primary: #1a253f;
-    --dark: #151a33;
+    --primary: #1B2039;
+    --dark: #202B44;
     --secondary: #2b55cc;
     --info: #4d79f6;
     --ternary: #848db3;
-    --pure: #eff2f9;
-    --fade: #7081b9;
-    --mild: #8997bd;
+    --pure: #ffffff;
+    --fade: #d7e6f8;
+    --mild: #d4def7;
     --footer: #212a4a;
     --black: #060b1b;
     --twitter: #4ac7ec;
@@ -30,6 +30,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    opacity: 1;
 }
 
 body {
