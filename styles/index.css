@@ -63,12 +63,6 @@ h6 {
   padding: 1.6rem 0;
 }
 
-.navbar {
-  background-color: var(--primary);
-  background: solid;
-  padding: 1.6rem 0;
-}
-
 .navbar-container {
   display: flex;
   align-items: center;
