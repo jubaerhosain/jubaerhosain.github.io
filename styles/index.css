@@ -119,9 +119,9 @@ h6 {
 }
 
 /* footer section css classes */
-footer {
-  margin-top: 100px;
-  margin-bottom: 100px;
+.footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .profile {
@@ -183,17 +183,17 @@ footer {
   color: var(--ternary);
 }
 
-.profile .right .contactinfo {
+.profile .right .contact-info {
   list-style-type: none;
   margin-bottom: 1.6rem;
 }
 
-.profile .right .contactinfo li {
+.profile .right .contact-info li {
   color: var(--ternary);
   margin: 0.7rem;
 }
 
-.profile .right .contactinfo li i {
+.profile .right .contact-info li i {
   font-size: 18px;
   margin-right: 0.3rem;
 }
@@ -620,7 +620,7 @@ footer {
     margin-left: 20px;
   }
 
-  .profile .right .contactinfo li {
+  .profile .right .contact-info li {
     font-size: 15px;
     margin-left: 0px;
     margin-right: 0px;
