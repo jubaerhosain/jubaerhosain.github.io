@@ -173,10 +173,6 @@ h6 {
   letter-spacing: 0px;
 }
 
-.hide {
-  color: var(--ternary);
-}
-
 .profile .right .contact-info {
   list-style-type: none;
   margin-bottom: 1.6rem;
