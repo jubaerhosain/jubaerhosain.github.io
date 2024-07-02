@@ -216,9 +216,10 @@ section {
 }
 
 .about,
-.education-experience,
-.project-skill,
+.education-experience-section,
+.achievement-skill-section,
 .achivement,
+.project-section,
 .online-judge-handle,
 .contact {
   background-color: black;
@@ -233,9 +234,10 @@ section {
 }
 
 .about h1::before,
-.education-experience h1::before,
-.project-skill h1::before,
+.education-experience-section h1::before,
+.achievement-skill-section h1::before,
 .achivement h1::before,
+.project-section h1::before,
 .online-judge-handle h1::before,
 .contact h1::before {
   content: "";
@@ -333,7 +335,7 @@ h5::before {
   margin-left: -21px;
 }
 
-.project-skill-container {
+.achievement-skill-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -551,7 +553,7 @@ footer {
   }
 
   .edu-exp-container,
-  .project-skill-container,
+  .achievement-skill-container,
   .count-up-container,
   .oj-handle-container,
   .contact-container,
@@ -577,9 +579,10 @@ footer {
 
   .profile,
   .about,
-  .education-experience,
-  .project-skill,
+  .education-experience-section,
+  .achievement-skill-section,
   .achivement,
+  .project-section,
   .count-up,
   .online-judge-handle,
   .contact {
@@ -655,7 +658,7 @@ footer {
     grid-area: header / sidebar;
   }
 
-  .project-skill-container {
+  .achievement-skill-container {
     display: grid;
     grid-template-columns: 1fr;
   }
