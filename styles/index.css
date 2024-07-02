@@ -218,7 +218,7 @@ section {
 .about,
 .education-experience-section,
 .achievement-skill-section,
-.achivement,
+.license-certificate-section,
 .project-section,
 .online-judge-handle,
 .contact {
@@ -236,7 +236,7 @@ section {
 .about h1::before,
 .education-experience-section h1::before,
 .achievement-skill-section h1::before,
-.achivement h1::before,
+.license-certificate-section h1::before,
 .project-section h1::before,
 .online-judge-handle h1::before,
 .contact h1::before {
@@ -368,7 +368,7 @@ h5::before {
   margin-top: 7px;
 }
 
-.achivement-container {
+.license-certificate-section-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -581,7 +581,7 @@ footer {
   .about,
   .education-experience-section,
   .achievement-skill-section,
-  .achivement,
+  .license-certificate-section,
   .project-section,
   .count-up,
   .online-judge-handle,
