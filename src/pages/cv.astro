@@ -1,0 +1,243 @@
+---
+import '../styles/global.css';
+import { site, experience, projects, skills, achievements } from '../data/site';
+
+const cvProjects = projects.slice(0, 3);
+const summary =
+  'Fullstack software engineer with ~2 years of experience building multi-tenant SaaS systems with TypeScript, NestJS, and PostgreSQL. Strong problem-solving background from competitive programming (1700+ problems solved). Currently expanding into AWS, Kubernetes, and AI agent systems.';
+---
+
+<!doctype html>
+<html lang="en" class="cv-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>CV — {site.name}</title>
+  </head>
+  <body class="cv-body">
+    <div class="print-hint">
+      This page is print-optimized — press <kbd>Ctrl/Cmd + P</kbd> and choose “Save as PDF” (A4,
+      default margins, background graphics off).
+    </div>
+
+    <main class="cv">
+      <header class="cv-header">
+        <h1>{site.name}</h1>
+        <p class="cv-role">{site.role}</p>
+        <p class="cv-contact">
+          {site.email} · {site.location} · github.com/jubaerhosain · linkedin.com/in/jubaerhosain
+        </p>
+      </header>
+
+      <section>
+        <h2>Summary</h2>
+        <p>{summary}</p>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        <div class="cv-entry-head">
+          <h3>{experience.title} — {experience.company}</h3>
+          <span>{experience.period}</span>
+        </div>
+        <p class="cv-entry-sub">{experience.intro} ({experience.introLink.label})</p>
+        <ul>
+          {experience.bullets.map((bullet) => <li>{bullet}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        {
+          cvProjects.map((project) => (
+            <div class="cv-project">
+              <div class="cv-entry-head">
+                <h3>{project.name}</h3>
+                <span>{project.tags.join(' · ')}</span>
+              </div>
+              <p>{project.description}</p>
+            </div>
+          ))
+        }
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <ul class="cv-skills">
+          {
+            skills.map((row) => (
+              <li>
+                <strong>{row.label}:</strong> {row.tags.join(', ')}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section>
+        <h2>Competitive Programming</h2>
+        <p>{achievements.lead}</p>
+        <ul>
+          {
+            achievements.judges.map((judge) => (
+              <li>
+                <strong>{judge.name}:</strong> {judge.stat} — {judge.detail}
+              </li>
+            ))
+          }
+          <li>{achievements.highlights}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <p>
+          <strong>{experience.education.degree}</strong> — {experience.education.school}
+        </p>
+      </section>
+    </main>
+
+    <style>
+      .cv-page {
+        color-scheme: light;
+        scroll-behavior: auto;
+      }
+
+      .cv-body {
+        background: #f1f5f9;
+        color: #1e293b;
+        font-family: var(--font-sans);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .print-hint {
+        background: #0f172a;
+        color: #e2e8f0;
+        padding: 0.75rem 1.5rem;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+
+      .print-hint kbd {
+        font-family: var(--font-mono);
+        color: #2dd4bf;
+      }
+
+      .cv {
+        background: #ffffff;
+        max-width: 210mm;
+        margin: 1.5rem auto;
+        padding: 14mm 16mm;
+        box-shadow: 0 1px 8px rgb(0 0 0 / 0.12);
+      }
+
+      .cv-header h1 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .cv-role {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: #0d9488;
+        margin-top: 0.15rem;
+      }
+
+      .cv-contact {
+        font-size: 0.78rem;
+        color: #64748b;
+        margin-top: 0.35rem;
+      }
+
+      section {
+        margin-top: 1.1rem;
+      }
+
+      h2 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #0d9488;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 0.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #0f172a;
+      }
+
+      .cv-entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      .cv-entry-head span {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: #64748b;
+        white-space: nowrap;
+      }
+
+      .cv-entry-sub {
+        color: #475569;
+        margin: 0.2rem 0 0.4rem;
+      }
+
+      ul {
+        list-style: disc;
+        padding-left: 1.2rem;
+        display: grid;
+        gap: 0.25rem;
+      }
+
+      .cv-skills {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .cv-project {
+        margin-bottom: 0.6rem;
+      }
+
+      .cv-project .cv-entry-head span {
+        white-space: normal;
+        text-align: right;
+      }
+
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+
+      @media print {
+        .print-hint {
+          display: none;
+        }
+
+        .cv-body {
+          background: #ffffff;
+        }
+
+        .cv {
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          box-shadow: none;
+        }
+
+        section {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </body>
+</html>

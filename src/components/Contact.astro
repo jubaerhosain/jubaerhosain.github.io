@@ -1,0 +1,21 @@
+---
+import Section from './ui/Section.astro';
+import Icon from './ui/Icon.astro';
+import { contact, site } from '../data/site';
+---
+
+<Section id="contact" heading={contact.heading} index="06">
+  <p class="mb-8 max-w-prose leading-relaxed text-muted">{contact.body}</p>
+  <a
+    href={`mailto:${site.email}`}
+    class="inline-flex items-center gap-2.5 rounded-md bg-accent px-5 py-2.5 font-medium text-slate-900 transition-colors duration-200 hover:bg-accent-bright"
+  >
+    <Icon name="mail" class="h-4 w-4" />
+    {site.email}
+  </a>
+  <div class="mt-8 flex gap-6 text-sm">
+    <a href={site.github} target="_blank" rel="noopener" class="text-muted transition-colors duration-200 hover:text-accent">GitHub</a>
+    <a href={site.linkedin} target="_blank" rel="noopener" class="text-muted transition-colors duration-200 hover:text-accent">LinkedIn</a>
+    <a href={site.resume} target="_blank" class="text-muted transition-colors duration-200 hover:text-accent">Resume</a>
+  </div>
+</Section>

@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = `${site.name} — ${site.role}`, description = site.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/images/ico.png" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:image" content={new URL('/images/profile.jpg', Astro.site)} />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <slot />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15 },
+      );
+      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

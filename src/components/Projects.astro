@@ -1,0 +1,73 @@
+---
+import Section from './ui/Section.astro';
+import Icon from './ui/Icon.astro';
+import { projects, site } from '../data/site';
+
+const featured = projects.find((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
+---
+
+<Section id="projects" heading="Projects" index="03">
+  {
+    featured && (
+      <article class="mb-6 rounded-lg border border-border bg-surface p-6 transition duration-200 hover:-translate-y-0.5 hover:border-accent/40 md:p-8">
+        <p class="mb-2 font-mono text-xs text-accent">Featured</p>
+        <h3 class="mb-3 text-xl font-semibold text-body">{featured.name}</h3>
+        <p class="mb-4 max-w-prose leading-relaxed text-muted">{featured.description}</p>
+        <div class="flex flex-wrap gap-2">
+          {featured.tags.map((tag) => (
+            <span class="rounded-full bg-accent/10 px-2.5 py-0.5 font-mono text-xs text-accent">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </article>
+    )
+  }
+  <div class="grid gap-6 md:grid-cols-3">
+    {
+      rest.map((project) => (
+        <article class="flex flex-col rounded-lg border border-border bg-surface p-6 transition duration-200 hover:-translate-y-0.5 hover:border-accent/40">
+          <h3 class="mb-3 font-semibold text-body">{project.name}</h3>
+          <p class="mb-4 grow text-sm leading-relaxed text-muted">{project.description}</p>
+          <div class="mb-4 flex flex-wrap gap-1.5">
+            {project.tags.map((tag) => (
+              <span class="rounded-full bg-accent/10 px-2 py-0.5 font-mono text-[11px] text-accent">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div class="flex gap-4 text-sm">
+            {project.source && (
+              <a
+                href={project.source}
+                target="_blank"
+                rel="noopener"
+                class="flex items-center gap-1.5 text-accent hover:underline"
+              >
+                <Icon name="github" class="h-4 w-4" />
+                Source
+              </a>
+            )}
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener"
+                class="flex items-center gap-1.5 text-accent hover:underline"
+              >
+                <Icon name="external" class="h-4 w-4" />
+                Live
+              </a>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+  <p class="mt-8">
+    <a href={site.github} target="_blank" rel="noopener" class="text-accent hover:underline">
+      More on GitHub →
+    </a>
+  </p>
+</Section>
