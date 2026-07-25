@@ -15,7 +15,7 @@ const { title = `${site.name} — ${site.role}`, description = site.description 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="light" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/images/ico.png" />
@@ -28,20 +28,8 @@ const { title = `${site.name} — ${site.role}`, description = site.description 
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <slot />
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          }
-        },
-        { threshold: 0.15 },
-      );
-      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-    </script>
+    <div class="mx-auto max-w-2xl px-5 py-10">
+      <slot />
+    </div>
   </body>
 </html>

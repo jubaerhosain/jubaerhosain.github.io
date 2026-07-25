@@ -1,6 +1,15 @@
 ---
 import '../styles/global.css';
-import { site, experience, projects, skills, achievements } from '../data/site';
+import {
+  site,
+  experience,
+  education,
+  projects,
+  skills,
+  judges,
+  achievements,
+  achievementsLead,
+} from '../data/site';
 
 const cvProjects = projects.slice(0, 3);
 const summary =
@@ -37,14 +46,29 @@ const summary =
 
       <section>
         <h2>Experience</h2>
-        <div class="cv-entry-head">
-          <h3>{experience.title} — {experience.company}</h3>
-          <span>{experience.period}</span>
-        </div>
-        <p class="cv-entry-sub">{experience.intro} ({experience.introLink.label})</p>
-        <ul>
-          {experience.bullets.map((bullet) => <li>{bullet}</li>)}
-        </ul>
+        {
+          experience.map((job) => (
+            <div>
+              <div class="cv-entry-head">
+                <h3>
+                  {job.title} — {job.company}
+                </h3>
+                <span>{job.period}</span>
+              </div>
+              {job.intro && (
+                <p class="cv-entry-sub">
+                  {job.intro}
+                  {job.introLink && ` (${job.introLink.label})`}
+                </p>
+              )}
+              <ul>
+                {job.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </section>
 
       <section>
@@ -68,7 +92,7 @@ const summary =
           {
             skills.map((row) => (
               <li>
-                <strong>{row.label}:</strong> {row.tags.join(', ')}
+                <strong>{row.label}:</strong> {row.items.join(', ')}
               </li>
             ))
           }
@@ -77,24 +101,40 @@ const summary =
 
       <section>
         <h2>Competitive Programming</h2>
-        <p>{achievements.lead}</p>
+        <p>{achievementsLead}</p>
         <ul>
           {
-            achievements.judges.map((judge) => (
+            judges.map((judge) => (
               <li>
-                <strong>{judge.name}:</strong> {judge.stat} — {judge.detail}
+                <strong>{judge.name}:</strong> {judge.rating} — {judge.detail}
               </li>
             ))
           }
-          <li>{achievements.highlights}</li>
+          {
+            achievements
+              .slice(0, 4)
+              .map((item) => (
+                <li>
+                  {item.placement} — {item.title}
+                  {item.year && ` (${item.year})`}
+                </li>
+              ))
+          }
         </ul>
       </section>
 
       <section>
         <h2>Education</h2>
-        <p>
-          <strong>{experience.education.degree}</strong> — {experience.education.school}
-        </p>
+        {
+          education.map((entry) => (
+            <div class="cv-entry-head">
+              <h3>
+                {entry.degree} — {entry.school}
+              </h3>
+              <span>{entry.period}</span>
+            </div>
+          ))
+        }
       </section>
     </main>
 
@@ -121,7 +161,7 @@ const summary =
       }
 
       .print-hint kbd {
-        font-family: var(--font-mono);
+        font-family: ui-monospace, monospace;
         color: #2dd4bf;
       }
 
@@ -140,7 +180,7 @@ const summary =
       }
 
       .cv-role {
-        font-family: var(--font-mono);
+        font-family: ui-monospace, monospace;
         font-size: 0.85rem;
         color: #0d9488;
         margin-top: 0.15rem;
@@ -181,7 +221,7 @@ const summary =
       }
 
       .cv-entry-head span {
-        font-family: var(--font-mono);
+        font-family: ui-monospace, monospace;
         font-size: 0.72rem;
         color: #64748b;
         white-space: nowrap;

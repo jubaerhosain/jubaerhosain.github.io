@@ -2,27 +2,9 @@
 import { site, nav } from '../data/site';
 ---
 
-<header class="sticky top-0 z-50 border-b border-border bg-bg/90 backdrop-blur">
-  <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-    <a href="/" class="font-mono text-lg font-medium text-accent">{site.shortName}</a>
-    <nav class="hidden items-center gap-6 md:flex" aria-label="Main">
-      {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            class="text-sm text-muted transition-colors duration-200 hover:text-accent"
-          >
-            {item.label}
-          </a>
-        ))
-      }
-    </nav>
-    <a
-      href={site.resume}
-      target="_blank"
-      class="rounded-md border border-accent px-4 py-1.5 text-sm font-medium text-accent transition-colors duration-200 hover:bg-accent/10"
-    >
-      Resume
-    </a>
-  </div>
+<header>
+  <nav class="flex flex-wrap gap-x-4 gap-y-1 text-sm" aria-label="Main">
+    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    <a href={site.resume} target="_blank">Resume</a>
+  </nav>
 </header>

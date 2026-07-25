@@ -3,27 +3,15 @@ import Section from './ui/Section.astro';
 import { skills } from '../data/site';
 ---
 
-<Section id="skills" heading="Skills" index="04">
-  <div class="space-y-6">
+<Section id="skills" heading="Skills">
+  <dl class="space-y-2">
     {
       skills.map((row) => (
-        <div class="flex flex-col gap-3 md:flex-row md:items-baseline">
-          <h3 class="w-32 shrink-0 font-mono text-sm text-faint">{row.label}</h3>
-          <div class="flex flex-wrap gap-2">
-            {row.tags.map((tag) => (
-              <span
-                class={
-                  row.exploring
-                    ? 'rounded-full border border-border px-3 py-1 font-mono text-xs text-muted'
-                    : 'rounded-full bg-accent/10 px-3 py-1 font-mono text-xs text-accent'
-                }
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+        <div class="sm:flex sm:gap-3">
+          <dt class="shrink-0 font-semibold sm:w-40">{row.label}</dt>
+          <dd class="text-muted">{row.items.join(', ')}</dd>
         </div>
       ))
     }
-  </div>
+  </dl>
 </Section>

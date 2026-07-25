@@ -4,10 +4,6 @@ import { site } from '../data/site';
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-border">
-  <div class="mx-auto max-w-4xl px-6 py-8">
-    <p class="text-center font-mono text-xs text-faint">
-      © {year} {site.name} · Built with Astro & Tailwind
-    </p>
-  </div>
+<footer class="mt-14 border-t border-border pt-6 pb-4">
+  <p class="text-sm text-muted">© {year} {site.name}</p>
 </footer>

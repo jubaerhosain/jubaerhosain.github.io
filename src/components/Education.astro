@@ -1,0 +1,23 @@
+---
+import Section from './ui/Section.astro';
+import { education } from '../data/site';
+---
+
+<Section id="education" heading="Education">
+  <ul class="space-y-3">
+    {
+      education.map((entry) => (
+        <li>
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+            <span class="font-semibold">{entry.degree}</span>
+            {entry.period && <span class="text-sm text-muted">{entry.period}</span>}
+          </div>
+          <p class="text-muted">
+            {entry.school}
+            {entry.note && <> · {entry.note}</>}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
