@@ -1,0 +1,148 @@
+# CV Material - Md. Jubaer Hosain
+
+Descriptions as bullet lists, focused on outcomes rather than implementation detail.
+No em dashes, no unverifiable numbers.
+Subrite content is evidenced by `MY-PRS.md.csv` (251 merged PRs, March 2025 to July 2026).
+
+---
+
+## Associate Software Engineer II - Subrite (March 2026 - July 2026)
+
+**Description:**
+
+- Designed and built the platform-wide tenant isolation layer, turning multi-tenant safety from a per-query convention into an enforced guarantee, then rolled it out across the platform's core modules.
+- Led billing and payment correctness work across recurring-payment workflows and all four card providers, ending a recurring class of incorrect-charge and missed-invoice incidents.
+- Built operator recovery tooling that recovered real customer payments taken at the payment provider but never recorded locally, without double-charging.
+- Made the platform's largest enterprise subscriptions usable at scale by replacing unbounded data loading with paginated APIs and consolidating duplicated admin and member-portal interfaces.
+- Standardised API error handling and improved production alerting so genuine failures surface clearly and false alarms stop competing with them.
+- Closed cross-tenant and cross-user data exposure paths, and repaired corrupted billing data in production safely and verifiably.
+- Worked independently across backend, frontend and database, coordinating directly with the product owner, CTO and non-technical customer support to triage escalations and agree scope.
+
+**Tools/Technology:**
+
+TypeScript, Python, SQL, NestJS, Next.js, React, PostgreSQL, Redis, Temporal workflows, CLS request context, Stripe, Vipps, Nets, SwedbankPay, EHF/Avtalegiro e-invoicing, SendGrid, Firebase Cloud Messaging, NextAuth, OIDC/OAuth 2.0, Swagger/OpenAPI, Jest, Docker, Docker Compose, CI/CD, Datadog, Linear
+
+---
+
+## Associate Software Engineer I - Subrite (March 2025 - March 2026)
+
+**Description:**
+
+- Delivered full-stack features across Subrite, a multi-tenant subscription-management SaaS for Nordic media, using NestJS and Next.js.
+- Led onboarding of new tenants with diverse payment integrations including Stripe, Vipps, Nets, SwedbankPay and EHF/Avtalegiro e-invoicing.
+- Moved tenant configuration from staff-mediated to self-service across settings, branding, communication and payment providers, reducing day-to-day operational load on the internal team.
+- Built out communication and email infrastructure on SendGrid, improving deliverability, consent handling and templates across four Nordic languages.
+- Delivered invoicing improvements that unblocked payment from business customers, alongside reusable embeddable widgets and hosted forms for tenant websites.
+- Built repeatable tenant onboarding data migrations, making new tenant imports reviewable, repeatable and safe to hand over.
+- Carried production hotfix and support-escalation ownership, communicating proactively with the product owner and non-technical customer support to keep integrations reliable.
+
+**Tools/Technology:**
+
+TypeScript, Python, SQL, NestJS, Next.js, React, PostgreSQL, Redis, Bull queues, SendGrid, Stripe, Vipps, Nets, SwedbankPay, EHF/Avtalegiro e-invoicing, MJML, next-intl, Tailwind CSS, Cloudflare Images, Jest, CI/CD, Sentry, Linear
+
+---
+
+## Trainee Software Engineer - Payroll, Cefalo (May 2024 - February 2025)
+
+**Description:**
+
+- Contributed to Cefalo's in-house Payroll system, building both backend and frontend features with NestJS and Next.js.
+- Delivered employee management, salary calculation and tax compliance workflows that replaced manual payroll processing.
+- Integrated Kafka as a message broker to enable asynchronous data exchange with related systems such as the HR Portal.
+
+**Tools/Technology:**
+
+TypeScript, NestJS, Next.js, MySQL, TypeORM, MinIO, Swagger, Kafka, Docker, Docker Compose, CI/CD
+
+---
+
+## Trainee Software Engineer - Cefalo ATS, Cefalo (November 2024 - December 2024)
+
+**Description:**
+
+- Joined the Cefalo ATS (Applicant Tracking System) team for a one-month engagement and became productive on an unfamiliar codebase quickly.
+- Investigated and fixed reported defects across both backend and frontend, improving the stability of the recruitment workflow.
+
+**Tools/Technology:**
+
+TypeScript, NestJS, Next.js, MySQL, Prisma, Swagger, Docker, Docker Compose, CI/CD
+
+---
+
+## Trainee Software Engineer - Cefalo Blog, Cefalo (March 2024 - May 2024)
+
+**Description:**
+
+- Completed two months of intensive training on HTTP, REST and core web and internet concepts, then built a full-stack dynamic blogging platform end to end.
+- Delivered post authoring with a rich text editor and image uploads, along with social features including likes, comments and threaded replies.
+- Implemented secure JWT authentication with both credential-based and social login, and role-based access control separating readers, authors and post owners.
+- Wrote unit tests with Jest to keep the platform reliable as functionality grew.
+
+**Tools/Technology:**
+
+TypeScript, Express.js, MySQL, Sequelize, React, Tailwind CSS, Cloudinary, Docker, Jest
+
+---
+
+## Tools & Technology (replaces the current resume section)
+
+**Programming Languages:** TypeScript, JavaScript, Python, Java, C, C++
+
+**Query Languages:** SQL
+
+**Back-end:** NestJS, Node.js, Express.js, FastAPI
+
+**Front-end:** React, Next.js (App Router, Server Actions), Tailwind CSS, Ant Design, Shadcn UI, next-intl, MJML, HTML, CSS
+
+**Databases & Data:** PostgreSQL, MySQL, MongoDB, Redis, TypeORM, Prisma, Sequelize, schema design, migrations and production data operations
+
+**Workflow, Queues & Async:** Temporal workflows, Bull queues, Kafka, cron jobs, background workers, event-driven architecture
+
+**Payments & Billing:** Stripe, Vipps, Nets, SwedbankPay, EHF/Avtalegiro e-invoicing, recurring billing and dunning
+
+**Communication & Messaging:** SendGrid, SMS, Firebase Cloud Messaging push notifications
+
+**Observability & Monitoring:** Datadog, Sentry, structured logging, production incident response
+
+**DevOps, Cloud & CI/CD:** Docker, Docker Compose, AWS, Cloudflare, GitHub Actions, Jenkins, Git
+
+**Testing:** Jest, unit and integration testing
+
+**Auth & Security:** JWT, NextAuth, OIDC/OAuth 2.0, CASL, RBAC, multi-tenant isolation, OWASP practices
+
+**Other:** Swagger/OpenAPI, Jira, Linear, MinIO, Cloudinary, Jupyter notebooks, SOLID design patterns and principles
+
+---
+
+## Notes
+
+**Implementation detail was moved out of the bullets on purpose.** Each bullet now states the
+outcome; the mechanism sits in your head for the interview. A recruiter skimming the page gets the
+gain, and a technical interviewer gets a natural opening to ask how you did it. The detail that was
+removed is still recoverable from `MY-PRS.md.csv` if you need to rehearse it.
+
+**The ASE II bullets are deliberately the weightier ones.** ASE I reads as breadth of delivery,
+ASE II as depth and ownership. The PR record genuinely splits that way: 2025 is tenant
+configuration, communications and invoicing features, while 2026 is architecture, billing
+correctness, scale and reliability.
+
+**First-person phrasing removed from the older roles.** Payroll, ATS and Blog originally opened with
+"I contributed" or "I developed". CV bullets conventionally lead with the verb, so all five roles
+now read consistently.
+
+**Some stack items were deliberately left out.** Playwright and Render are part of the Subrite stack
+but appear in zero PRs, so they are better omitted than defended in an interview. The same applies
+to SMS: the PRs contain extensive SMS work but never name a provider, so no vendor is claimed.
+
+**Period placement of observability tooling.** Sentry appears only in 2025 PRs and Datadog only from
+July 2026, so each role lists the one actually in use at the time.
+
+**One gap to be ready for.** The PR record has zero PRs in March 2026 and a low-volume April.
+Nothing in these bullets depends on that window, but have an explanation ready if anyone reads the
+record alongside the resume.
+
+**Not claimed:** mentoring, reviewing others' PRs, or formal ADRs, since the record shows no
+evidence of these. If any are true, they can be added.
+
+**Defensible numbers if pressed in an interview:** file, entity and diff counts, the Datadog hit
+counts, and the 3000+ seat scale target. Not percentages, since none were measured.
