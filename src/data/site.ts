@@ -4,9 +4,9 @@ export const site = {
   positioning: 'Backend-focused fullstack engineer',
   company: 'Cefalo Bangladesh Ltd.',
   tagline:
-    'I build backend-heavy SaaS systems — multi-tenant architecture, payment integrations, and production data migrations — with TypeScript, NestJS, and PostgreSQL.',
+    'I build backend-heavy SaaS systems with TypeScript, NestJS and PostgreSQL: multi-tenant architecture, payment integrations, and production data migrations.',
   description:
-    'Md. Jubaer Hosain — backend-focused fullstack engineer building multi-tenant subscription SaaS with TypeScript, NestJS, and PostgreSQL.',
+    'Md. Jubaer Hosain, backend-focused fullstack engineer building multi-tenant subscription SaaS with TypeScript, NestJS and PostgreSQL.',
   url: 'https://jubaerhosain.github.io',
   email: 'jubaerhosain1119@gmail.com',
   github: 'https://github.com/jubaerhosain',
