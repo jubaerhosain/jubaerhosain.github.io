@@ -1,0 +1,39 @@
+---
+import { contact, contactItems } from '../../data/site';
+import Section from '../ui/Section.astro';
+import AccentCard from '../ui/AccentCard.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="contact" title={contact.heading} last>
+  <p class="mb-8 max-w-2xl text-text-light">{contact.body}</p>
+
+  <ul class="space-y-6">
+    {
+      contactItems.map((item) => (
+        <AccentCard as="li">
+          <div class="flex items-start gap-6">
+            <span class="mt-0.5 flex-shrink-0 text-primary">
+              <Icon name={item.icon} class="h-6 w-6" />
+            </span>
+            <div class="min-w-0">
+              <p class="font-mono text-xs text-text-lighter">{item.label}</p>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  class="break-all text-text transition hover:text-primary"
+                >
+                  {item.value}
+                </a>
+              ) : (
+                <p class="text-text">{item.value}</p>
+              )}
+            </div>
+          </div>
+        </AccentCard>
+      ))
+    }
+  </ul>
+</Section>

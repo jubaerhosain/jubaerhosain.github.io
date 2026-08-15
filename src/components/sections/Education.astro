@@ -1,0 +1,26 @@
+---
+import { education } from '../../data/site';
+import Section from '../ui/Section.astro';
+import AccentCard from '../ui/AccentCard.astro';
+---
+
+<Section id="education" title="Education">
+  <ul class="space-y-6">
+    {
+      education.map((entry) => (
+        <AccentCard as="li">
+          <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+            <h3 class="font-semibold text-text">{entry.degree}</h3>
+            {entry.period && (
+              <p class="font-mono text-xs whitespace-nowrap text-text-lighter">{entry.period}</p>
+            )}
+          </div>
+          <p class="mt-1 text-sm text-text-light">
+            {entry.school}
+            {entry.note && <span class="text-text-lighter"> · {entry.note}</span>}
+          </p>
+        </AccentCard>
+      ))
+    }
+  </ul>
+</Section>

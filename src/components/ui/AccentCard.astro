@@ -1,0 +1,16 @@
+---
+/**
+ * The site's recurring motif: a tinted card with a left accent bar and no
+ * full border. Used by Education, Achievements, Skills and Contact.
+ */
+interface Props {
+  class?: string;
+  as?: 'div' | 'li';
+}
+
+const { class: className = '', as: Tag = 'div' } = Astro.props;
+---
+
+<Tag class:list={['rounded border-l-[3px] border-primary bg-bg-alt p-6', className]}>
+  <slot />
+</Tag>

@@ -1,0 +1,58 @@
+---
+import { achievements, achievementsLead, judges } from '../../data/site';
+import Section from '../ui/Section.astro';
+import AccentCard from '../ui/AccentCard.astro';
+import HoverCard from '../ui/HoverCard.astro';
+---
+
+<Section id="achievements" title="Achievements">
+  <p class="mb-8 text-text-light" set:html={achievementsLead} />
+
+  <ul class="space-y-6">
+    {
+      achievements.map((item) => (
+        <AccentCard as="li">
+          <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+            <h3 class="font-semibold text-text">{item.title}</h3>
+            {item.year && (
+              <p class="font-mono text-xs whitespace-nowrap text-text-lighter">{item.year}</p>
+            )}
+          </div>
+          <p class="mt-1 text-sm text-primary">{item.placement}</p>
+        </AccentCard>
+      ))
+    }
+  </ul>
+
+  <div class="mt-12">
+    <h3 class="mb-6 text-xl font-semibold text-text">Online Judges</h3>
+    <ul class="grid grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-6">
+      {
+        judges.map((judge) => (
+          <HoverCard as="li" lift="lg" class="!p-0">
+            <a
+              href={judge.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-full flex-col items-center gap-2 p-6 text-center"
+            >
+              <img
+                src={judge.logo}
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                class="h-12 w-12 object-contain"
+              />
+              <span class="text-sm font-semibold text-text">{judge.name}</span>
+              {judge.rating && (
+                <span class="font-mono text-xs text-primary">{judge.rating}</span>
+              )}
+              {judge.detail && <span class="text-xs text-text-lighter">{judge.detail}</span>}
+            </a>
+          </HoverCard>
+        ))
+      }
+    </ul>
+  </div>
+</Section>
