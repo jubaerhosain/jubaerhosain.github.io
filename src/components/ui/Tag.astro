@@ -1,0 +1,23 @@
+---
+/**
+ * One pill component replacing the three near-identical tag variants on the
+ * reference site (and the `.join(' · ')` string concatenation the previous
+ * build used in three separate components).
+ */
+interface Props {
+  tone?: 'muted' | 'primary';
+}
+
+const { tone = 'muted' } = Astro.props;
+
+const toneClass = tone === 'primary' ? 'text-primary' : 'text-text-lighter';
+---
+
+<span
+  class:list={[
+    'rounded-sm border border-border bg-bg px-2 py-0.5 font-mono text-xs whitespace-nowrap',
+    toneClass,
+  ]}
+>
+  <slot />
+</span>

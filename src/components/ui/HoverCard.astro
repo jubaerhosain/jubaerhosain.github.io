@@ -1,0 +1,23 @@
+---
+/**
+ * Fully bordered card that lifts on hover. Used by projects, stat boxes and
+ * judge tiles. `lift` controls how far — tiles lift further than cards.
+ */
+interface Props {
+  class?: string;
+  lift?: 'none' | 'sm' | 'lg';
+  as?: 'div' | 'li';
+}
+
+const { class: className = '', lift = 'sm', as: Tag = 'div' } = Astro.props;
+
+const liftClass = {
+  none: '',
+  sm: 'transition duration-200 hover:border-primary hover:-translate-y-0.5',
+  lg: 'transition duration-300 hover:border-primary hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]',
+}[lift];
+---
+
+<Tag class:list={['rounded border border-border bg-bg-alt p-6', liftClass, className]}>
+  <slot />
+</Tag>

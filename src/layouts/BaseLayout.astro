@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+import Sidebar from '../components/Sidebar.astro';
+import MobileNav from '../components/MobileNav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = `${site.name} — ${site.title}`, description = site.description } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(site.avatar, Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: site.title,
+  description: site.description,
+  url: site.url,
+  email: `mailto:${site.email}`,
+  image: ogImage.toString(),
+  sameAs: [site.github, site.linkedin],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Dhaka',
+    addressCountry: 'BD',
+  },
+  worksFor: {
+    '@type': 'Organization',
+    name: site.company,
+    url: 'https://cefalo.com',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Institute of Information Technology, University of Dhaka',
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/images/ico.png" />
+    <link rel="apple-touch-icon" href="/images/profile.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="generator" content={Astro.generator} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} is:inline />
+  </head>
+
+  <body>
+    <a
+      href="#intro"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
+    >
+      Skip to content
+    </a>
+
+    <MobileNav />
+
+    <div class="lg:grid lg:grid-cols-[17.5rem_1fr]">
+      <Sidebar />
+
+      <div class="flex min-h-screen flex-col px-5 pt-20 pb-10 lg:px-12 lg:pt-12">
+        <main class="mx-auto w-full max-w-[1100px] flex-1">
+          <slot />
+        </main>
+        <div class="mx-auto w-full max-w-[1100px]">
+          <Footer />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      import '../scripts/nav';
+    </script>
+  </body>
+</html>

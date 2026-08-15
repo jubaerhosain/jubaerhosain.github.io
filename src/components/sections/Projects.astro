@@ -1,0 +1,76 @@
+---
+import { projects, site } from '../../data/site';
+import Section from '../ui/Section.astro';
+import HoverCard from '../ui/HoverCard.astro';
+import Tag from '../ui/Tag.astro';
+import Icon from '../ui/Icon.astro';
+
+// Featured work leads; the rest keep their array order.
+const ordered = [...projects].sort(
+  (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+);
+---
+
+<Section id="projects" number="03" title="Selected Projects">
+  <ul class="grid gap-6 lg:grid-cols-2">
+    {
+      ordered.map((project) => (
+        <HoverCard as="li" class="flex flex-col">
+          <div class="flex items-start justify-between gap-4">
+            <Icon name="folder" class="h-6 w-6 flex-shrink-0 text-primary" />
+            <div class="flex flex-shrink-0 items-center gap-3">
+              {project.source && (
+                <a
+                  href={project.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.name} source on GitHub`}
+                  class="text-text-lighter transition hover:text-primary"
+                >
+                  <Icon name="github" class="h-4 w-4" />
+                </a>
+              )}
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.name} live site`}
+                  class="text-text-lighter transition hover:text-primary"
+                >
+                  <Icon name="external" class="h-4 w-4" />
+                </a>
+              )}
+            </div>
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h3 class="text-lg font-semibold text-text">{project.name}</h3>
+            <p class="font-mono text-xs text-text-lighter">{project.date}</p>
+          </div>
+
+          <p class="mt-2 flex-1 text-sm text-text-light">{project.description}</p>
+
+          <div class="mt-4 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <Tag>{tag}</Tag>
+            ))}
+          </div>
+
+          {!project.source && !project.live && (
+            <p class="mt-3 font-mono text-xs text-text-lighter">Private repository</p>
+          )}
+        </HoverCard>
+      ))
+    }
+  </ul>
+
+  <p class="mt-6 font-mono text-xs text-text-lighter">
+    <a
+      href={site.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-primary underline underline-offset-2">More on GitHub →</a
+    >
+  </p>
+</Section>

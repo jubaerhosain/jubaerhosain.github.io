@@ -1,0 +1,11 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-12 border-t border-border pt-8 text-center">
+  <p class="font-mono text-xs text-text-lighter">
+    © {year} {site.name} · Built with Astro and Tailwind CSS
+  </p>
+</footer>

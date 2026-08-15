@@ -1,0 +1,62 @@
+---
+import { site, about, stats, profileTags, narrative } from '../../data/site';
+import Section from '../ui/Section.astro';
+import HoverCard from '../ui/HoverCard.astro';
+import Tag from '../ui/Tag.astro';
+---
+
+<Section id="intro" number="01" title="Introduction">
+  <!-- Profile card, styled as an editor panel with a fake title bar. -->
+  <div class="mb-8 overflow-hidden rounded-md border border-border bg-bg">
+    <div class="border-b border-border bg-bg-alt px-4 py-2">
+      <span class="font-mono text-xs text-text-lighter">profile</span>
+    </div>
+
+    <div class="p-6">
+      <div class="flex items-center gap-4">
+        <img
+          src={site.avatar}
+          alt=""
+          width="56"
+          height="56"
+          class="h-14 w-14 flex-shrink-0 rounded-full border border-border object-cover"
+        />
+        <div class="min-w-0">
+          <p class="text-lg font-semibold text-text">{site.name}</p>
+          <p class="font-mono text-xs text-primary">{site.title} · {site.company}</p>
+          <p class="text-sm text-text-lighter">{site.positioning} · {site.location}</p>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2 border-y border-border py-4">
+        {profileTags.map((tag) => <Tag tone="primary">{tag}</Tag>)}
+      </div>
+
+      <p class="mt-4 text-sm leading-relaxed text-text-light">{site.tagline}</p>
+    </div>
+  </div>
+
+  <div class="space-y-4 text-text-light">
+    {about.map((paragraph) => <p set:html={paragraph} />)}
+  </div>
+
+  <!-- Cross-cutting narrative: the thread that ties the projects together. -->
+  <div class="mt-8 rounded border-l-[3px] border-primary bg-bg-alt p-6">
+    <h3 class="mb-2 text-lg font-semibold text-text">{narrative.heading}</h3>
+    <p
+      class="text-text-light [&_code]:rounded-sm [&_code]:bg-bg [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.85em]"
+      set:html={narrative.body}
+    />
+  </div>
+
+  <ul class="mt-8 grid grid-cols-2 gap-6 lg:grid-cols-4">
+    {
+      stats.map((stat) => (
+        <HoverCard as="li" lift="none" class="text-center">
+          <p class="font-mono text-[1.75rem] leading-none font-bold text-primary">{stat.value}</p>
+          <p class="mt-2 text-xs text-text-lighter">{stat.label}</p>
+        </HoverCard>
+      ))
+    }
+  </ul>
+</Section>
