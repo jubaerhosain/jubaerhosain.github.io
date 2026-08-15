@@ -111,7 +111,7 @@ if (menu && panel && openButton) {
     }
   });
 
-  // A resize past the breakpoint leaves the drawer stranded — close it.
+  // A resize past the breakpoint leaves the drawer stranded, so close it.
   window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
     if (event.matches && menu.getAttribute('aria-hidden') === 'false') closeMenu();
   });

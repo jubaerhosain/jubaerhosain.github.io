@@ -1,5 +1,5 @@
 ---
-import { site, about, stats, profileTags, narrative } from '../../data/site';
+import { site, about, stats, profileTags } from '../../data/site';
 import Section from '../ui/Section.astro';
 import HoverCard from '../ui/HoverCard.astro';
 import Tag from '../ui/Tag.astro';
@@ -38,15 +38,6 @@ import Tag from '../ui/Tag.astro';
 
   <div class="space-y-4 text-text-light">
     {about.map((paragraph) => <p set:html={paragraph} />)}
-  </div>
-
-  <!-- Cross-cutting narrative: the thread that ties the projects together. -->
-  <div class="mt-8 rounded border-l-[3px] border-primary bg-bg-alt p-6">
-    <h3 class="mb-2 text-lg font-semibold text-text">{narrative.heading}</h3>
-    <p
-      class="text-text-light [&_code]:rounded-sm [&_code]:bg-bg [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.85em]"
-      set:html={narrative.body}
-    />
   </div>
 
   <ul class="mt-8 grid grid-cols-2 gap-6 lg:grid-cols-4">

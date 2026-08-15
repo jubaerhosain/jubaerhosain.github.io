@@ -23,7 +23,7 @@ export interface NavItem {
 }
 
 /**
- * Section order — the single source of truth. `ui/Section.astro` derives each
+ * Section order, the single source of truth. `ui/Section.astro` derives each
  * section's number from an entry's position here, so reordering means editing
  * this array and `pages/index.astro`, nothing else.
  */
@@ -50,20 +50,16 @@ export const stats: { value: string; label: string }[] = [
 export const profileTags = ['TypeScript', 'NestJS', 'PostgreSQL', 'Next.js', 'AWS', 'Docker'];
 
 /**
- * Introduction prose. `<span class="highlight">` marks emphasis, matching the
- * `.highlight` rule in global.css — these are rendered with set:html.
+ * Introduction prose, one short paragraph. `<span class="highlight">` marks
+ * emphasis, matching the `.highlight` rule in global.css; rendered with set:html.
+ *
+ * Deliberately kept to two or three lines. Everything it used to carry
+ * (nestjs-transactions, the AsyncLocalStorage thread, what I'm learning) already
+ * appears further down the page in Projects or Skills.
  */
 export const about: string[] = [
-  'I\'m a <span class="highlight">backend-focused fullstack engineer</span> at Cefalo Bangladesh Ltd., where I\'ve spent the last two and a half years on a <span class="highlight">multi-tenant subscription SaaS</span> for Nordic publishers — 136 entities, 605 API routes, and 251 merged pull requests.',
-  'Most of my work sits where correctness matters and mistakes are expensive: the <span class="highlight">tenant-isolation layer</span> that makes multi-tenant safety an enforced guarantee rather than a per-query convention, <span class="highlight">billing correctness</span> across four card providers, and production data migrations where the preview output doubles as the rollback record.',
-  'Before that I came up through competitive programming — 1700+ problems, LeetCode Knight. Outside work I publish and maintain open source, and I\'ve been going deeper on <span class="highlight">AWS, Kubernetes, and AI agent systems</span>.',
+  'I\'m a <span class="highlight">backend-focused fullstack engineer</span> at Cefalo Bangladesh Ltd., working on a <span class="highlight">multi-tenant subscription SaaS</span> for Nordic publishers. Most of my work sits where correctness is expensive: tenant isolation, billing across four card providers, and production data migrations. Before that I came up through competitive programming, 1700+ problems solved and LeetCode Knight.',
 ];
-
-/** Cross-cutting narrative — PORTFOLIO.md §5, Thread 1. */
-export const narrative = {
-  heading: 'One problem, four codebases',
-  body: 'I first met the request-context problem on Cefalo Payroll — keeping a database transaction coherent when a single business operation spans several services. I used <code>AsyncLocalStorage</code> to fix it there, reached for the same pattern again on Beautified You, then built continuation-local storage into the substrate of the tenant-isolation layer at work. Having solved it three times, I generalised it and published it: <span class="highlight">nestjs-transactions</span>, a maintained replacement for the unmaintained library everyone had been using. That is the thread I\'d point at first — not any single project, but a problem I kept following until it became something other people could install.',
-};
 
 export interface Role {
   title: string;
@@ -89,7 +85,7 @@ export const experience: ExperienceEntry[] = [
     period: 'Jan 2024 – Present',
     location: 'Dhaka, Bangladesh',
     intro:
-      'Subrite — a multi-tenant subscription and media-monetization SaaS used by Nordic publishers. 136 entities, 605 API routes, four card providers, four locales.',
+      'Subrite, a multi-tenant subscription and media monetization SaaS built for a Nordic client and live in production with publishers.',
     introLink: { label: 'subrite.no', url: 'https://www.subrite.no' },
     stack: ['NestJS', 'TypeScript', 'TypeORM', 'PostgreSQL', 'Next.js', 'Temporal', 'Datadog'],
     roles: [
@@ -97,27 +93,21 @@ export const experience: ExperienceEntry[] = [
         title: 'Associate Software Engineer II',
         period: 'Mar 2026 – Present',
         bullets: [
-          'Designed and rolled out the platform-wide tenant-isolation layer, turning multi-tenant safety from a per-query convention into an enforced guarantee — a generic <code>TenantScopedRepository</code> over TypeORM and continuation-local storage that scopes every read and stamps every write, with an explicit escape hatch. Raised tenant-scoped entities from 78 to 90 of 136 across five modules.',
-          'Originated that programme from two cross-tenant exposures I found and fixed myself — payment-provider settings readable across tenants, and subscription records reachable by the wrong user — then generalised the fix into architecture rather than patching twice.',
-          'Ended a class of incorrect-charge incidents by diagnosing a four-part compound defect in the recurring-payment workflow and unifying the charge guards across all four card providers, which had each carried their own divergent variant.',
-          'Built operator recovery tooling for the worst state a billing system can reach — money debited at the provider with no local record — matching on provider status plus subscription metadata and idempotent so it cannot double-charge. Recovered real customer payments.',
-          'Cut production alert noise so genuine failures surface: eliminated 114 Datadog error-tracking hits in 14 days from expected webhook duplicates, and rewrote third-party feed alerting from one error per check to one alert per two-hour outage window.',
-          'Made the platform\'s largest enterprise subscriptions usable — paginated seat APIs for 3000+ member subscriptions, an N+1 eliminated via batched lookups, shipped behind a Swagger deprecation path instead of a breaking change.',
-          'Repaired corrupted billing data in production, safely and verifiably: a read-only preview whose output doubles as the rollback record, a snapshot table, a transactional apply, and attribution tags on every touched row. It became the template for later data-ops work in the repo.',
-          'Raised security issues rather than only fixing assigned ones — nine security-typed PRs, including cross-tenant settings exposure, cross-user subscription access, and survey data readable without survey permission.',
-          'Owned features end to end: clarification and planning, implementation, deployment, monitoring, feedback and hotfix — writing the deployment notes each change needed, then watching the result in Datadog.',
+          '<span class="highlight">Designed and rolled out multi-tenant isolation</span>, enforcing tenant-scoped data access across the platform after finding and fixing two cross-tenant exposures myself.',
+          '<span class="highlight">Improved recurring-payment reliability</span> across Stripe, Vipps, SwedbankPay and Nets by unifying the charge guards each provider had implemented differently, ending a class of incorrect-charge incidents.',
+          'Built operator recovery tooling for the worst case in billing, money debited at the provider with no local record. It matches on provider status and is idempotent, so it cannot double-charge.',
+          'Repaired corrupted billing data in production with a read-only preview, a snapshot table and a transactional apply. It became the template for later data-ops work in the repo.',
+          '<span class="highlight">Owned features end to end</span>, from clarification and planning through deployment, monitoring and hotfix, working directly with the product owner and customer support.',
         ],
       },
       {
         title: 'Associate Software Engineer I',
         period: 'Mar 2025 – Mar 2026',
         bullets: [
-          'Delivered fullstack features across Subrite with NestJS and Next.js — 163 PRs merged in 2025 alone.',
-          'Led onboarding of new tenants with diverse payment integrations: Stripe, Vipps, Nets, SwedbankPay, and EHF/Avtalegiro e-invoicing.',
-          'Moved tenant configuration from staff-mediated to self-service across settings, branding, communication and payment providers — including a per-brand system giving each brand its own hostname, logo, sender identity and OTP templates.',
-          'Built out communication and email infrastructure on SendGrid across four Nordic languages, including hard- vs soft-bounce tracking with an event-priority model, because provider events arrive out of order and a later, less definitive event must not overwrite an earlier one.',
-          'Extracted communication senders into a first-class approvable entity via a four-step ordered schema migration — add, migrate, migrate, deprecate — because doing it in one step risked losing every tenant\'s sender configuration.',
-          'Built repeatable tenant onboarding data migrations across six media tenants: dry-run by default, requiring an explicit apply flag, and reviewable enough to hand over.',
+          '<span class="highlight">Led onboarding of new tenants</span>, working with technical and non-technical stakeholders to map legacy data and run safe, repeatable migrations.',
+          'Integrated payment providers for new tenants: Stripe, Vipps, Nets, SwedbankPay, and EHF/Avtalegiro e-invoicing.',
+          'Moved tenant configuration from staff-mediated to self-service across settings, branding, communication and payment providers, including per-brand hostname, logo and sender identity.',
+          'Built email infrastructure on SendGrid across four Nordic languages, with hard and soft bounce tracking ordered by event priority so a late event cannot overwrite an earlier one.',
           'Carried production hotfix and support-escalation ownership, working directly with the product owner and non-technical customer support.',
         ],
       },
@@ -125,9 +115,9 @@ export const experience: ExperienceEntry[] = [
         title: 'Trainee Software Engineer',
         period: 'Jan 2024 – Feb 2025',
         bullets: [
-          '<span class="highlight">Cefalo Payroll</span> — 477 commits over 10 months on the in-house payroll platform: employee management, salary calculation and tax-compliance workflows replacing manual processing, with Kafka for asynchronous exchange with the HR Portal. NestJS + TypeORM + MySQL + MinIO; Next.js + Redux Toolkit front end. Also reported an information-disclosure defect leaking database query details in error messages.',
-          '<span class="highlight">Cefalo ATS</span> — a one-month engagement fixing reported defects across backend and frontend on an unfamiliar codebase. NestJS + Prisma, Jenkins CI, a Turborepo monorepo serving separate internal and public apps behind Nginx.',
-          '<span class="highlight">Cefalo Blog</span> — two months of intensive training on HTTP, REST and core web concepts, then a fullstack blogging platform built end to end: rich-text authoring with image uploads, threaded comments, JWT and social auth, and role-based access control. 648 commits across two repos in three months.',
+          '<span class="highlight">Cefalo Payroll:</span> contributed to the NestJS and Next.js payroll platform, delivering employee management, salary calculation, tax-compliance workflows, and Kafka-based asynchronous exchange with the HR Portal.',
+          '<span class="highlight">Cefalo ATS:</span> joined an unfamiliar codebase for a one-month engagement and fixed backend and frontend defects to stabilise recruitment workflows.',
+          '<span class="highlight">Cefalo Blog:</span> trained on HTTP, REST and web fundamentals, then built a blogging platform end to end with rich-text authoring, JWT and social auth, and role-based access control.',
         ],
       },
     ],
@@ -177,7 +167,7 @@ export const projects: Project[] = [
     date: 'Jul 2026 – present',
     tags: ['TypeScript', 'NestJS', 'TypeORM', 'Prisma', 'pnpm', 'Jest'],
     description:
-      'A published npm library that keeps a database transaction coherent when one business operation spans several services. Annotate a method with @Transactional() and the transaction propagates through AsyncLocalStorage — no transaction object threaded through every signature, no runtime ORM patching. Three packages: an ORM-agnostic core plus TypeORM and Prisma adapters, with integration tests against two real Postgres containers and a nightly dependency-upgrade workflow. Written as a maintained replacement for the unmaintained typeorm-transactional.',
+      'Published npm packages giving NestJS a @Transactional() decorator, with transaction propagation through AsyncLocalStorage and configurable isolation levels. Written as a maintained replacement for the unmaintained typeorm-transactional, with adapters for TypeORM and Prisma and integration tests against real Postgres.',
     source: 'https://github.com/jubaerhosain/nestjs-transactions',
     featured: true,
   },
@@ -186,7 +176,7 @@ export const projects: Project[] = [
     date: 'Feb 2026 – present',
     tags: ['NestJS', 'Expo', 'React Native', 'PostgreSQL', 'TypeORM', 'Sentry'],
     description:
-      'A cost-splitting app for shared households. In Bangladesh a "mess" is a shared living arrangement where several people cook together and split grocery and meal costs monthly — usually tracked in a paper ledger, which gets contentious fast. Members log meals, someone records shared expenses, and the app produces the month-end settlement. Shipped to app stores with subscriptions and ads. The API emits openapi.json and the mobile app regenerates a typed client from it, so a breaking API change surfaces as a TypeScript error rather than a runtime bug in someone\'s hands.',
+      'A cost-splitting app for shared households, where several people cook together and split grocery and meal costs monthly. Shipped to app stores with subscriptions and ads; the API emits an OpenAPI spec and the mobile app regenerates a typed client from it, so a breaking change fails at compile time.',
     featured: true,
   },
   {
@@ -194,7 +184,7 @@ export const projects: Project[] = [
     date: 'Jul – Aug 2025',
     tags: ['FastAPI', 'LangChain', 'Qdrant', 'OpenAI', 'NestJS', 'MinIO'],
     description:
-      'A recruitment assistant that reads a pool of CVs and ranks them against a job description, so a recruiter gets structured comparison instead of 200 PDFs. CVs are parsed into structured fields, embedded, and retrieved through a RAG pipeline; recruiters then query the pool conversationally. I built the real-time parsing, the semantic-search API, chat memory, and the PII anonymisation layer that strips identifying data before anything reaches the model.',
+      'A recruitment assistant that reads a pool of CVs and ranks them against a job description through a RAG pipeline, so a recruiter gets a structured comparison rather than a folder of PDFs. I built the real-time parsing, the semantic-search API, chat memory, and the PII anonymisation that runs before anything reaches the model.',
     featured: true,
   },
   {
@@ -202,7 +192,7 @@ export const projects: Project[] = [
     date: 'May 2024 – Apr 2025',
     tags: ['NestJS', 'MongoDB', 'Next.js', 'Ant Design', 'Swagger'],
     description:
-      'An e-commerce and inventory platform built for a cosmetics retailer — a paying client, live, with real customers ordering through it. The commercially important half is the admin side: catalogue and inventory management, order processing, and a sales dashboard the shop owner uses to run the business. I owned the backend integration; the repo\'s todo.md tracks the client\'s change requests and bug reports with status markers.',
+      'An e-commerce and inventory platform built for a cosmetics retailer, live with real customers ordering through it. I owned the backend: catalogue and inventory management, order processing, and the sales dashboard the shop owner runs the business from.',
     live: 'https://beautifiedyou.vercel.app/',
     featured: true,
   },
@@ -211,7 +201,7 @@ export const projects: Project[] = [
     date: 'Jul 2026',
     tags: ['AWS', 'ECS Fargate', 'Terraform', 'NestJS', 'Next.js', 'SQS'],
     description:
-      'A deliberately over-engineered multi-user task manager, built to exercise a realistic production AWS stack end to end rather than read about it. The app is modest; the point is that it runs on VPC + ALB + ECS Fargate + RDS + ElastiCache + SQS + S3 + Secrets Manager + CloudWatch, provisioned from a runbook. Testcontainers and LocalStack so tests hit real infrastructure, multi-stage non-root Docker targets, and CI that ends in a Trivy scan and an OIDC-authenticated push to ECR.',
+      'A deliberately over-engineered task manager, built to exercise a production AWS stack end to end rather than read about it. VPC, ALB, ECS Fargate, RDS, ElastiCache, SQS and Secrets Manager, with Testcontainers and LocalStack so tests hit real infrastructure and CI ending in an OIDC-authenticated push to ECR.',
     source: 'https://github.com/jubaerhosain/cloudtask',
     featured: true,
   },
@@ -220,28 +210,28 @@ export const projects: Project[] = [
     date: 'Jan 2025 – Jan 2026',
     tags: ['NestJS', 'PostgreSQL', 'MySQL', 'BullMQ', 'Next.js'],
     description:
-      'An ERP for running an educational institution — programmes, classrooms, students, teachers, semesters, admissions, exams, attendance, audit logs. Built twice: v1 was a conventional single-tenant app, and v2 is a deliberate rewrite with multi-tenancy as a first-class concern from the start — a dedicated tenants module, a tenant-provisioning runbook and scripts, and a companion mobile app. Building the same domain twice and changing the architecture the second time is the useful part.',
+      'An ERP for running an educational institution: programmes, students, teachers, semesters, admissions, exams and attendance. Built twice, with v2 a deliberate rewrite putting multi-tenancy in from the start, plus a tenant-provisioning runbook and a companion mobile app.',
   },
   {
     name: 'easy-shop',
     date: 'Jul 2024 – Jan 2025',
     tags: ['NestJS', 'MongoDB', 'Next.js', 'FastAPI', 'scikit-learn', 'Ollama'],
     description:
-      'A commerce platform built as five independently deployable services, used as a vehicle for learning breadth: a NestJS core API integrating SSLCommerz, a Next.js storefront and admin, an Expo mobile app, a FastAPI recommender trained with scikit-learn, and an LLM shopping assistant running a fine-tuned Mistral. 1,147 commits over seven months — my largest personal codebase, and over-architected on purpose.',
+      'A commerce platform built as five independently deployable services, used as a vehicle for learning breadth. A NestJS core API integrating SSLCommerz, a Next.js storefront and admin, an Expo mobile app, a FastAPI recommender trained with scikit-learn, and an LLM shopping assistant on a fine-tuned Mistral.',
   },
   {
     name: 'Cefalo Blog',
     date: 'Feb – May 2024',
     tags: ['TypeScript', 'Express', 'MySQL', 'Sequelize', 'React', 'Tailwind CSS'],
     description:
-      'A blogging platform built end to end during my training at Cefalo — rich-text authoring with image uploads, likes, threaded comments and replies, JWT and social login, and role-based access control. 648 commits across two repos in three months, and my first professional TypeScript work.',
+      'A blogging platform built end to end during my training at Cefalo, with rich-text authoring and image uploads, likes, threaded comments and replies, JWT and social login, and role-based access control. My first professional TypeScript work.',
   },
   {
     name: 'Mini LinkedIn',
     date: 'Oct 2022',
     tags: ['React', 'Node.js', 'MongoDB', 'Docker', 'MinIO', 'Nginx'],
     description:
-      'A microservice-based social app — auth, posts, image uploads and notifications split into separate services behind Nginx, built for the distributed systems course.',
+      'A microservice-based social app with auth, posts, image uploads and notifications split into separate services behind Nginx. Built for the distributed systems course.',
     source: 'https://github.com/jubaerhosain/mini-linkedin',
   },
   {
@@ -249,7 +239,7 @@ export const projects: Project[] = [
     date: 'Oct 2022',
     tags: ['Express', 'MySQL', 'React', 'Tailwind CSS'],
     description:
-      'A platform for the Software Project Lab at IIT, University of Dhaka — supervisor allocation, mark evaluation, and progress monitoring for student project work.',
+      'A platform for the Software Project Lab at IIT, University of Dhaka, covering supervisor allocation, mark evaluation, and progress monitoring for student project work.',
     source: 'https://github.com/jubaerhosain/spl-management-system',
   },
   {
@@ -257,7 +247,7 @@ export const projects: Project[] = [
     date: 'Sep 2023 · 24h hackathon',
     tags: ['Express', 'React', 'MongoDB'],
     description:
-      'A BUET CSE FEST 2023 hackathon build that generates customised PDFs — children\'s books, travel blogs — from text, voice and image input, with a platform to share and browse them.',
+      'A BUET CSE FEST 2023 hackathon build that generates customised PDFs, such as children\'s books and travel blogs, from text, voice and image input. Comes with a platform to share and browse them.',
     source: 'https://github.com/jubaerhosain/smart-gpt',
   },
   {
@@ -413,11 +403,11 @@ export const achievements: Achievement[] = [
  * Wording rule, from CV-MASTER.md §8 and the note in portfolio-context/latex/
  * resume.tex: the AWS entries are Udemy *course completions*, not the proctored
  * DVA-C02 / SAA-C03 exams. "AWS Certified …" appears only as part of a Udemy
- * course title, always next to `Udemy` as the provider — never as a credential
+ * course title, always next to `Udemy` as the provider, never as a credential
  * held. Do not relabel these as certifications.
  */
 export const coursesLead =
-  'Course completions and skill certificates, each linked to its credential. The AWS entries are <span class="highlight">Udemy course completions</span> — not the proctored AWS exams.';
+  'Course completions and skill certificates, each linked to its credential. The AWS entries are <span class="highlight">Udemy course completions</span>, not the proctored AWS exams.';
 
 export interface Course {
   name: string;

@@ -1,6 +1,6 @@
 # jubaerhosain.github.io
 
-Personal portfolio — [jubaerhosain.github.io](https://jubaerhosain.github.io)
+Personal portfolio: [jubaerhosain.github.io](https://jubaerhosain.github.io)
 
 Astro 5 + Tailwind 4, static, no client framework. A fixed left sidebar with a
 single-page numbered scroll; light theme only.
@@ -18,14 +18,14 @@ npm run preview
 
 ```
 src/
-├─ data/site.ts              all content — edit here, not in components
+├─ data/site.ts              all content, edit here not in components
 ├─ layouts/BaseLayout.astro  shell, meta/OG/JSON-LD, sidebar + main grid
 ├─ components/
 │  ├─ Sidebar.astro          desktop rail: profile, nav, socials, CV
 │  ├─ MobileNav.astro        < lg: fixed header + right drawer
 │  ├─ Footer.astro
 │  ├─ ui/                    Section, AccentCard, HoverCard, Tag, Icon
-│  └─ sections/              the six numbered sections
+│  └─ sections/              the eight numbered sections
 ├─ scripts/nav.ts            IntersectionObserver scroll-spy + drawer
 └─ styles/global.css         @theme tokens (Tailwind 4, CSS-first)
 ```
@@ -36,20 +36,20 @@ Sections, in order: `01 Introduction` · `02 Experience` · `03 Selected Project
 
 **Section order and numbering come from the `nav` array in `site.ts`.**
 `ui/Section.astro` derives each number from an entry's position there, so
-reordering or inserting a section means editing `nav` and `pages/index.astro` —
+reordering or inserting a section means editing `nav` and `pages/index.astro`,
 nothing else. A section whose `id` is absent from `nav` renders unnumbered.
 
 ## Editing content
 
 Everything user-visible lives in `src/data/site.ts`. A few fields are rendered
 with `set:html` so they can carry `<span class="highlight">` emphasis and
-`<code>`: `about`, `narrative.body`, `achievementsLead`, `coursesLead`, and
+`<code>`: `about`, `achievementsLead`, `coursesLead`, and
 experience bullets.
 
 **Wording rule for `courses`.** The AWS entries are Udemy *course completions*,
 not the proctored DVA-C02 / SAA-C03 exams. "AWS Certified …" may appear only as
 part of a verbatim Udemy course title, always alongside `Udemy` as the visible
-provider — never as a credential held. See `CV-MASTER.md` §8 and the note in
+provider, never as a credential held. See `CV-MASTER.md` §8 and the note in
 `portfolio-context/latex/resume.tex`.
 
 `public/files/jubaer-hosain-cv.pdf` is the CV linked from the sidebar and the
@@ -64,5 +64,5 @@ GitHub Pages on every push to `main`.
 
 `portfolio-context/` holds the research and CV source material this site draws
 from. It is not part of the build and never ships to `dist/`. Several files in
-it are marked never-publish — client names, interview talking points, and the
+it are marked never-publish: client names, interview talking points, and the
 gap analysis.

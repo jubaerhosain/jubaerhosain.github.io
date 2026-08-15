@@ -43,7 +43,7 @@ section[id] {
   }
 }
 
-/* Emphasis inside prose paragraphs — the reference's `.highlight` span. */
+/* Emphasis inside prose paragraphs, matching the reference's `.highlight` span. */
 .highlight {
   color: var(--color-text);
   font-weight: 600;
