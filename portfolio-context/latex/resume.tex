@@ -1,0 +1,216 @@
+%==============================================================================
+%  Md. Jubaer Hosain -- Resume
+%  Format: recreation of the "blue heading + full-width rule" one-page template.
+%  Engine: pdfLaTeX (works as-is on Overleaf). XeLaTeX/LuaLaTeX also fine.
+%  Content source: portfolio-context/CV-1PAGE-BEST.md
+%==============================================================================
+
+% Paper: A4 (regional norm for Dhaka / Nordic employers).
+% Swap to letterpaper if you need US Letter -- the layout holds either way.
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lf]{carlito}        % Calibri-metric font, lining (non-oldstyle) figures
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[
+  left=0.45in, right=0.45in, top=0.4in, bottom=0.35in, footskip=0.2in
+]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+% ---- palette ----------------------------------------------------------------
+\definecolor{accent}{HTML}{2E5C8A}   % heading blue -- tweak to taste
+\definecolor{rulegray}{HTML}{333333}
+\definecolor{body}{HTML}{1A1A1A}
+\color{body}
+
+% ---- page furniture ---------------------------------------------------------
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\raggedbottom
+
+% ---- building blocks --------------------------------------------------------
+
+% Section heading: blue title + full-width rule underneath.
+\newcommand{\cvsection}[1]{%
+  \vspace{3pt}%
+  {\color{accent}\fontsize{12}{13.5}\selectfont #1}\par
+  \vspace{1pt}%
+  {\color{rulegray}\hrule height 0.6pt}%
+  \vspace{2pt}%
+}
+
+% Two-column line: content left, date (or place) flush right.
+\newcommand{\cvline}[2]{%
+  \noindent
+  \begin{minipage}[t]{0.73\linewidth}\raggedright #1\end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.26\linewidth}\raggedleft #2\end{minipage}\par
+}
+
+% Employer / project title line.
+\newcommand{\cvheading}[2]{\cvline{\fontsize{11}{13}\selectfont\bfseries #1}{\fontsize{10}{11.6}\selectfont #2}}
+
+% Role / sub-heading line.
+\newcommand{\cvrole}[2]{\vspace{0.5pt}\cvline{\fontsize{10}{11.6}\selectfont #1}{\fontsize{10}{11.6}\selectfont #2}}
+
+% Italic context line (client, product, scope).
+\newcommand{\cvcontext}[1]{\vspace{0.5pt}{\fontsize{9.5}{11.2}\selectfont\itshape #1}\par}
+
+% Starred tools line, as used under each project in the reference layout.
+\newcommand{\cvtools}[1]{\vspace{0.5pt}{\fontsize{9.5}{11.2}\selectfont$\star$~\textbf{Tools \& Technologies:} #1}\par}
+
+% Bullet list.
+\newlist{cvbullets}{itemize}{1}
+\setlist[cvbullets]{
+  leftmargin  = 1.35em,
+  labelsep    = 0.45em,
+  label       = \raisebox{0.15ex}{\scriptsize$\bullet$},
+  topsep      = 1.5pt,
+  itemsep     = 0.5pt,
+  parsep      = 0pt,
+  partopsep   = 0pt,
+  font        = \normalfont,
+  before      = \fontsize{10}{11.9}\selectfont
+}
+
+% Spacer between entries within a section.
+\newcommand{\cvgap}{\vspace{2.5pt}}
+
+% Full-width role line, for stacking several titles held at one employer.
+\newcommand{\cvroleline}[1]{\vspace{0.5pt}{\fontsize{10}{11.6}\selectfont #1}\par}
+
+% Contact-bar item.
+\newcommand{\cvcontact}[2]{\mbox{{\color{body}#1}~#2}}
+
+%==============================================================================
+\begin{document}
+
+% ---------- HEADER -----------------------------------------------------------
+{\color{accent}\fontsize{20}{22}\selectfont\bfseries MD. JUBAER HOSAIN}\par
+\vspace{3pt}
+{\color{rulegray}\hrule height 0.8pt}
+\vspace{4pt}
+
+% One line by design. The LinkedIn and GitHub labels are shortened so all six items
+% fit; the icons identify which is which and the links carry the full URLs.
+{\fontsize{9}{11}\selectfont
+\cvcontact{\faEnvelope}{\href{mailto:jubaerhosain1119@gmail.com}{jubaerhosain1119@gmail.com}}\hspace{0.55em}
+\cvcontact{\faPhone}{+8801717407400}\hspace{0.55em}
+\cvcontact{\faMapMarker}{Dhaka, Bangladesh}\hspace{0.55em}
+\cvcontact{\faLinkedin}{\href{https://linkedin.com/in/jubaerhosain}{in/jubaerhosain}}\hspace{0.55em}
+\cvcontact{\faGithub}{\href{https://github.com/jubaerhosain}{jubaerhosain}}\hspace{0.55em}
+\cvcontact{\faGlobe}{\href{https://jubaerhosain.github.io}{jubaerhosain.github.io}}
+\par}
+
+% ---------- EXPERIENCE -------------------------------------------------------
+\cvsection{EXPERIENCE}
+
+\cvheading{Cefalo Bangladesh Ltd.}{Dhaka $\cdot$ Jan 2024 to Present}
+\cvroleline{\textbf{Associate Software Engineer II} (Mar 2026 to Present) $\cdot$ \textbf{Associate Software Engineer I}
+(Mar 2025 to Mar 2026), full-time}
+\cvcontext{Client: \textbf{Subrite}, a subscription and media monetization SaaS built for a Nordic
+client and live in production with publishers. }
+\begin{cvbullets}
+  \item \textbf{Led onboarding of new tenants}, collaborating with technical and non-technical stakeholders to understand legacy systems, map data, and execute safe, repeatable migrations into Subrite.
+  \item \textbf{Improved recurring-payment reliability} across Stripe, Vipps, SwedbankPay, and Nets by implementing idempotent payment workflows, preventing duplicate charges and missed billing events.
+  \item \textbf{Designed and rolled out multi-tenant isolation}, enforcing tenant-scoped data access across the platform and preventing cross-tenant data exposure.
+   \item \textbf{Improved dashboard and high-computation API performance} from \textbf{150 seconds to milliseconds} by implementing SWR caching and fixing N+1 query problem.
+  \item \textbf{Owned production issues end-to-end}, coordinating with product owner, CTO, and customer support to diagnose incidents, prioritize fixes, and deliver reliable backend and full-stack solutions.
+  \item \textbf{Tools \& Technology:} TypeScript, Python, SQL, NestJS, Next.js, React, PostgreSQL, Redis, Queue, Temporal, Stripe, Vipps, Nets, SwedbankPay, SendGrid, CI/CD, Sentry.
+\end{cvbullets}
+
+\cvgap
+\cvrole{\textbf{Trainee Software Engineer}, (full-time Jan–Jun 2024, part-time thereafter) $\cdot$ Dhaka}{Jan 2024 to Feb 2025}
+\cvcontext{Internal Cefalo products: \textbf{Payroll} (May 2024 -- Feb 2025) and \textbf{ATS} (Nov -- Dec 2024).}
+\begin{cvbullets}
+  \item \textbf{Cefalo Payroll:} Contributed to the NestJS/Next.js payroll platform, delivering employee management, salary calculation, tax-compliance workflows, and Kafka-based asynchronous data exchange with the HR Portal.
+  \item \textbf{Cefalo ATS:} Joined an unfamiliar codebase for a one-month engagement, quickly becoming productive and fixing backend and frontend defects to improve recruitment workflow stability.
+  \item \textbf{Training and Pet Project:} Trained on HTTP, REST and web fundamentals, then built Cefalo Blog end to end with rich-text authoring, JWT auth with social
+login, and role-based access control.
+\end{cvbullets}
+
+% ---------- SKILLS -----------------------------------------------------------
+\cvsection{SKILLS}
+
+{\fontsize{10}{12}\selectfont
+\textbf{\footnotesize LANGUAGES \& FRAMEWORKS:} TypeScript, JavaScript, SQL, Python, Java, C++, NestJS, ExpressJs, React, React Native, Next.js, Tailwind CSS, Redux\par
+\textbf{\footnotesize DATABASE, CLOUD \& PLATFORM:} PostgreSQL, MySQL, MongoDB, Redis, Temporal, BullMQ, Docker, AWS, GitHub Actions, Sentry, Stripe, Vipps, EHF e-invoicing, JWT, OIDC/OAuth 2.0, multi-tenancy, Jest\par
+\textbf{\footnotesize AI-ASSISTED DEVELOPMENT \& ML:} Claude, Cursor, Anthropic SDK, LangChain, RAG
+\par}
+
+% ---------- PROJECTS ---------------------------------------------------------
+\cvsection{PROJECTS}
+
+\cvheading{\href{https://www.npmjs.com/package/@nestjs-transactions/typeorm}{nestjs-transactions}}{Jul 2026 to Present}
+\cvtools{TypeScript, NestJS, TypeORM, Prisma, pnpm}
+\begin{cvbullets}
+\item Published two MIT-licensed npm packages implementing a \texttt{@Transactional()} decorator with \texttt{AsyncLocalStorage}-based transaction propagation and configurable transaction isolation levels, inspired by Spring Boot's transactional model.
+\end{cvbullets}
+
+\cvgap
+\cvheading{Mess Ledger}{Feb 2026 to Present}
+\cvtools{NestJS, PostgreSQL, Expo, React Native}
+\begin{cvbullets}
+  \item Shipped meal-expense-splitting product whose API and mobile app share a generated OpenAPI
+        client for wire-level type safety, with subscriptions, push notifications, PDF reports and Sentry.
+\end{cvbullets}
+
+\cvgap
+\cvheading{\href{https://github.com/jubaerhosain/cloudtask}{CloudTask}}{Jul 2026}
+\cvtools{Turborepo, NestJS, Next.js, AWS ECS Fargate, RDS, SQS, S3}
+\begin{cvbullets}
+ \item Built an AWS reference architecture for hands-on cloud learning: web app, API, and SQS worker in one monorepo with Zod-shared contracts, Testcontainers and Playwright tests, and OIDC-authenticated ECR releases via GitHub Actions.
+\end{cvbullets}
+
+\cvgap
+\cvheading{\href{https://github.com/jubaerhosain/CV-Analyzer-AI-Agent}{CV Analyzer AI Agent}}{Jul to Aug 2025}
+\cvtools{FastAPI, LangChain, Qdrant, PostgreSQL OpenAI, Ollama, NestJS, Next.js}
+\begin{cvbullets}
+  \item \textbf{Led backend, LLM integration, and RAG development} for a hackathon-built AI recruitment assistant that ranks CVs against job descriptions using real-time PDF parsing, semantic search, conversational context and memory, and PII anonymization before LLM processing.
+\end{cvbullets}
+
+% ---------- PROBLEM SOLVING & AWARDS ----------------------------------------
+\cvsection{PROBLEM SOLVING \& AWARDS}
+
+{\fontsize{10}{12}\selectfont
+\textbf{1700+} problems solved. \textbf{LeetCode Knight (top 5\%)}, best rank 652 $\cdot$ HackerEarth rank 23
+$\cdot$ CodeChef 4-star, rank 96 $\cdot$ Codeforces Specialist.\par
+\vspace{2pt}
+\textbf{Champion}, Independence Cup Programming Contest 2022 $\cdot$ \textbf{6th of 650+}, Phitron
+Programming Contest 2022 $\cdot$ \textbf{17th} in SEC IUJPC 2022
+$\cdot$ \textbf{Onsite finalist}, BUET CSE FEST Hackathon 2023 $\cdot$
+\textbf{Round 2}, Meta Hacker Cup 2023\par}
+
+% ---------- COURSES ---------------------------------------------------------
+% Heading is "COURSES", not "Certifications": these are course completions, not
+% the proctored AWS exams. Do not relabel unless you have actually sat DVA-C02.
+\cvsection{COURSES}
+
+{\fontsize{10}{12}\selectfont
+\href{https://www.udemy.com/certificate/UC-5644d052-45a5-420b-9888-cea3973fc3d0/}{AWS Certified Developer Associate (Udemy)}
+$\cdot$
+\href{https://ostad.app/share/certificate/c38498-md.-jubaer-hosain}{Mastering DevOps (Ostad)}
+$\cdot$
+\href{https://www.udemy.com/certificate/UC-b037a9da-e2db-477e-a7f5-2e28ac2a4c8d/}{React Native: The Practical Guide (Udemy)}
+$\cdot$
+\href{https://www.udemy.com/certificate/UC-b2345c4a-fb8f-46f5-a08d-db30bcf0c2b6/}{AWS Solutions Architect Associate (Udemy)}
+$\cdot$
+\href{https://verify.skilljar.com/c/uqss9jm5tspk}{Building with the Claude API (Anthropic)}
+\par}
+
+% ---------- EDUCATION --------------------------------------------------------
+\cvsection{EDUCATION}
+
+\cvheading{Institute of Information Technology, University of Dhaka}{2019 to 2024}
+\cvrole{B.Sc.\ in Software Engineering}{Dhaka, Bangladesh}
+
+\end{document}

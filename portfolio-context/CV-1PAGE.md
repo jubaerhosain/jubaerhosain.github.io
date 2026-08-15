@@ -1,6 +1,9 @@
 <!-- 1-PAGE CV DRAFT — structure mirrors the reference CV: no summary, experience first,
-     metrics bolded inline. Body = 670 words; fits one page at the reference CV's density.
+     metrics bolded inline. Fits one page at the reference CV's density.
      If it spills, cut the CV Analyzer project or the Courses line first.
+     Cut from this version to hold one page (all survive in CV-2PAGE.md): the "removed 1,233
+     net lines consolidating duplicated admin interfaces" metric, and the CV Analyzer AI Agent
+     project — the AI signal is carried by the ownership bullet and the Skills line instead.
      Renders as: centered name, two contact lines, then ruled section headings. -->
 
 <div align="center">
@@ -18,28 +21,30 @@ LinkedIn: linkedin.com/in/jubaerhosain | GitHub: github.com/jubaerhosain | jubae
 ## EXPERIENCE
 
 **Cefalo Bangladesh Ltd.** — Dhaka, Bangladesh · Jan 2024 – Present
-*Subrite, a multi-tenant subscription SaaS for Nordic publishers — 136 entities, 605 API
-routes, 4 payment providers, 4 locales. **251 merged PRs in 17 months, 56 of them production
-hotfixes.***
+*Client project: **Subrite** (subrite.no) — a multi-tenant subscription and media-monetization
+SaaS in production use by Nordic media publishers. 136 entities, 605 API routes, 4 payment
+providers, 4 locales. **251 merged PRs in 17 months, 56 of them production hotfixes.***
 
 **Associate Software Engineer II** · Mar 2026 – Present
 - Designed and rolled out the platform-wide tenant-isolation layer, turning multi-tenant
   safety from a per-query convention into an enforced guarantee, raising tenant-scoped
-  entities from **78 to 90 of 136** — a programme self-originated after finding and fixing two
-  cross-tenant data-exposure paths.
+  entities from **78 to 90 of 136** — a programme self-originated after finding two
+  cross-tenant data-exposure paths; **9 security-typed issues raised and closed** in total.
 - Ended a class of incorrect-charge incidents by diagnosing a four-part defect in the
   recurring-payment workflow and unifying charge guards across **all four card providers**,
   which had each carried a divergent implementation; **40 tests** added. Built idempotent
   recovery tooling that reclaimed real payments debited at the provider but never recorded
   locally.
 - Made the largest enterprise subscriptions usable at **3000+ members** with paginated APIs
-  shipped behind a deprecation path, and removed **1,233 net lines** consolidating duplicated
-  admin interfaces onto a shared framework.
+  shipped behind a deprecation path, and fixed a slow, fragile API with stale-while-revalidate
+  caching — a reusable per-key-locked primitive now available to any expensive read on the
+  platform.
 - Cut production alert noise so genuine failures surface — eliminated **114 Datadog error
   hits in 14 days** and rewrote outage alerting from one error per check to one per
   **two-hour** window.
-- Reviewed teammates' pull requests proactively, turned vague requirements into scoped
-  subtasks, and delivered AI-assisted with Claude and Cursor.
+- Owned features end to end — clarification, implementation, deployment, monitoring and
+  hotfix — reviewed teammates' pull requests proactively, turned vague requirements into
+  scoped subtasks, and delivered AI-assisted with Claude and Cursor.
 
 **Associate Software Engineer I** · Mar 2025 – Mar 2026
 - Delivered fullstack features with NestJS and Next.js, onboarding new tenants across Stripe,
@@ -51,10 +56,10 @@ hotfixes.***
 
 **Trainee Software Engineer** · Jan 2024 – Feb 2025
 - Contributed **477 commits over 10 months** to Cefalo's payroll platform (NestJS, TypeORM,
-  MySQL, Kafka, MinIO; Next.js and Redux Toolkit), delivering salary-calculation and
+  MySQL, Kafka, MinIO; Next.js, Redux Toolkit), delivering salary-calculation and
   tax-compliance workflows that replaced manual processing.
-- Built a fullstack blogging platform end to end with JWT auth, social login and RBAC after
-  two months of intensive training on HTTP, REST and core web concepts.
+- Built a fullstack blogging platform with rich-text authoring, JWT auth, social login and
+  RBAC, after two months of intensive training on HTTP, REST and core web concepts.
 
 ---
 
@@ -66,29 +71,28 @@ hotfixes.***
   monkey-patching, with Changesets releases and dockerized dual-Postgres integration tests.
 
 **Mess Ledger** | *NestJS, PostgreSQL, Expo, React Native* · Feb 2026 – Present
-- Shipped a mobile product end to end — API and React Native app sharing a generated OpenAPI
-  client, with subscriptions, push notifications, PDF reports and Sentry.
+- Shipped a mobile product to the app stores — API and React Native app sharing a generated
+  OpenAPI client, with subscriptions, push notifications, PDF reports and Sentry.
 
-**CV Analyzer AI Agent** | *FastAPI, LangChain, Qdrant, OpenAI, NestJS* · Jul 2025
-- Built real-time PDF parsing, semantic search and chat memory for a RAG recruitment
-  assistant, anonymizing extracted PII before it reaches the model.
+**Beautified You** | *NestJS, MongoDB, Next.js, Ant Design* · May 2024 – Apr 2025
+- **Paid client project with one collaborator**, live with real customers — owned the backend
+  integration for an e-commerce and admin-inventory platform: products, categories, carts,
+  orders and JWT authentication across a NestJS and Mongoose API.
 
 ---
 
 ## SKILLS & ACHIEVEMENTS
 
-**Technical**: TypeScript, JavaScript, SQL, Python, Java, C++ · NestJS, Node.js, Express,
-FastAPI, REST APIs · React, Next.js, Tailwind CSS · PostgreSQL, MySQL, MongoDB, Redis,
-TypeORM, Prisma · Temporal, BullMQ, Kafka, event-driven architecture · Stripe, Vipps, Nets,
-SwedbankPay, EHF e-invoicing · Datadog, Sentry, Jest, Docker, AWS, GitHub Actions · JWT,
-OIDC/OAuth 2.0, RBAC, multi-tenant isolation · Claude, Cursor, LangChain, RAG
+**Technical**: TypeScript, JavaScript, SQL, Python, Java, C++ · NestJS, Node.js, REST APIs ·
+React, Next.js, Tailwind CSS · PostgreSQL, MySQL, Redis, TypeORM · Temporal, BullMQ, Kafka,
+event-driven architecture · Stripe, Vipps, EHF e-invoicing · Datadog, Jest, Docker, AWS,
+GitHub Actions · JWT, OIDC/OAuth 2.0, multi-tenant isolation · Claude, Cursor, LangChain, RAG
 
-**Problem-Solving**: 1700+ problems solved. **LeetCode Knight (top 5%)**, best global rank
-652 · **HackerEarth** best global rank 23 · **CodeChef 4-star**, best global rank 96 ·
-**Codeforces Specialist**
+**Problem-Solving**: 1700+ problems solved · **LeetCode Knight (top 5%)**, best rank 652 ·
+**HackerEarth** best rank 23 · **CodeChef 4-star**, best rank 96 · **Codeforces Specialist**
 
-**Courses**: AWS Certified Developer Associate · AWS Solutions Architect Associate ·
-Building with the Claude API · Mastering DevOps
+**Courses**: AWS Developer Associate · AWS Solutions Architect Associate · Building with the
+Claude API
 
 ---
 

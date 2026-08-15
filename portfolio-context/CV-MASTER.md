@@ -152,6 +152,28 @@ Candidate bullets — superset. `[evidence]` → `{posting keyword}`.
     person.
     `[my-words.md; `api-server/CLAUDE.md` documented in #4893; #4276]`
     → *{AI-first mindset, AI-assisted development tools, agentic AI capabilities}*
+16. **Fixed a slow API by adding stale-while-revalidate caching to the shared cache service**
+    — a reusable `SwrCacheEntry` with a per-key lock to prevent a revalidation stampede, so
+    operators get an immediate cached response while expensive counts refresh in the
+    background. Also made the underlying count query degrade gracefully, so one malfunctioning
+    segment can no longer empty the entire dropdown: a partial failure now yields a partial
+    result instead of a total outage. The SWR primitive is available to any other expensive
+    read on the platform.
+    `[#5166 — 7 files, +707/-42, SUBRITE-405 High; test suites for the SWR path and the lock]`
+    → *{performance, moderately complex problems, technical expertise}* ← **your own pick**
+17. **Raised security issues, not just fixed assigned ones** — **9 security-typed PRs**, two
+    flagged as security concerns in the tracker. Found and reported cross-tenant payment-
+    provider settings exposure, cross-user subscription access, and survey data readable
+    without survey permission; also filed the only issue on Cefalo's payroll repo, an
+    information-disclosure defect leaking database query details in error messages.
+    `[#3620, #4432, #5068 (Urgent + Security concern), #5374 (SUBRITE-661 Security concern), #5317; cefalobd/payroll issue #1]`
+    → *{demonstrating initiative, critical thinking}* ← **your own pick**
+18. **Owned features end to end** — clarification and planning, implementation, deployment,
+    monitoring, feedback and hotfix. Authored the deployment notes each change needed (profile
+    cache clear, tenant settings cache clear across all tenants, "test all statistics screens
+    on stage before production"), then watched the result in Datadog and fixed what surfaced.
+    `[my-words.md; deployment notes in #5068, #3955, #4269; 56 production hotfixes; Datadog-raised issues #5370, #5362]`
+    → *{epic ownership, on-call accountability, utilizing feedback}* ← **your own pick**
 
 #### 3b. Associate Software Engineer I · Mar 2025 – Mar 2026
 
@@ -248,41 +270,74 @@ Ordered by CV value. `[P]` = private repo — safe to name, code stays private.
    memory, and **anonymization of extracted PII before it reaches the LLM**. 33 commits in 7
    days.
    → *{AI-first mindset, agentic AI capabilities}*
-4. **CloudTask** — *Turborepo, Next.js, NestJS, AWS ECS Fargate/RDS/ElastiCache/SQS/S3, Zod* ·
+4. **Beautified You** `[P]` — *NestJS, MongoDB/Mongoose, Next.js, Ant Design, Tremor* ·
+   May 2024 – Apr 2025 · live at `beautifiedyou.vercel.app`
+   **Paid client project, built with one collaborator** — an e-commerce and admin-inventory
+   platform for a cosmetics retailer, in production with real customers. **Owned the backend
+   integration**: NestJS + Mongoose API across products, categories, carts, orders, users and
+   auth, with JWT/passport authentication, AutoMapper DTO mapping, class-validator, Swagger
+   docs, slug generation, and an AsyncLocalStorage request-context module. The admin side
+   covers catalogue and inventory management with a Tremor analytics dashboard.
+   `[204 of 376 commits authored (collaborator 171); an account belonging to the client also committed — evidence of a live commercial engagement. todo.md tracks the client's change requests, bugs and feature requests with status.]`
+   → *{delivering to a real customer, utilizing feedback, collaboration}*
+   **Why this matters for these applications:** it's your only *paid, customer-facing*
+   delivery outside employment, and the `todo.md` change-request log is concrete evidence of
+   the "Utilizing Feedback" competency Optimizely names for SE II. Worth naming the
+   collaboration explicitly — shared delivery is a plus, not a caveat.
+
+5. **CloudTask** — *Turborepo, Next.js, NestJS, AWS ECS Fargate/RDS/ElastiCache/SQS/S3, Zod* ·
    Jul 2026 · `github.com/jubaerhosain/cloudtask`
    AWS reference architecture built in 9 days: monorepo with a web app, API and SQS worker,
    Zod-shared contracts, Testcontainers integration tests, Playwright E2E, Trivy scanning,
    and OIDC-authenticated ECR releases.
-5. **easy-shop** `[P]` — *NestJS, MongoDB, Next.js, Expo, FastAPI, scikit-learn, Ollama* ·
+6. **easy-shop** `[P]` — *NestJS, MongoDB, Next.js, Expo, FastAPI, scikit-learn, Ollama* ·
    Jul 2024 – Jan 2025
    **1,147 commits.** Five-service commerce platform: API with SSLCommerz payments and Google
    OAuth, storefront, mobile app, a scikit-learn recommendation service, and a fine-tuned
    Mistral assistant.
-6. **Academic Management System v1 + v2** `[P]` — *NestJS, TypeORM, MySQL→PostgreSQL, BullMQ, Next.js* ·
+7. **Academic Management System v1 + v2** `[P]` — *NestJS, TypeORM, MySQL→PostgreSQL, BullMQ, Next.js* ·
    Jan 2025 – Jan 2026
    282 commits on v1; then a **multi-tenant v2 rewrite** on PostgreSQL with tenant
    provisioning scripts, audit logging, and admissions/exams/attendance domains.
    → *Independent evidence of multi-tenant design outside work.*
-7. **anthropic-labs** — *Jupyter, Python, Anthropic SDK* · Jul 2026 ·
+8. **anthropic-labs** — *Jupyter, Python, Anthropic SDK* · Jul 2026 ·
    `github.com/jubaerhosain/anthropic-labs`
    Public lab series on the Claude Messages API: streaming, tool definitions, a hand-written
    agentic loop, server-side web search, and token/cost accounting.
-8. **Code Samurai 2024 platform** `[P]` — *Express, Sequelize, MySQL, Vite, MUI, Leaflet* · Mar 2024
+9. **Code Samurai 2024 platform** `[P]` — *Express, Sequelize, MySQL, Vite, MUI, Leaflet* · Mar 2024
    3-person team, **64 documented API endpoints in 9 days** (201 commits): waste-management
    admin platform with startup-seeded RBAC across four roles, Leaflet mapping and PDF export.
-9. **DevOps portfolio** — *Terraform, Kubernetes, Helm, Prometheus, Grafana, Loki, SonarQube* ·
+10. **DevOps portfolio** — *Terraform, Kubernetes, Helm, Prometheus, Grafana, Loki, SonarQube* ·
    Aug 2025 – Jan 2026
    Hands-on program: Terraform-provisioned AWS EC2/S3, Kubernetes zero-downtime rolling
    updates, Helm-installed observability stack, SonarQube quality gates, GitHub Actions
    CI/CD, plus a containerized capstone.
-10. **data-structures-and-algorithms** — *C++, Java* · 2021 – 2025 ·
+11. **data-structures-and-algorithms** — *C++, Java* · 2021 – 2025 ·
     805 commits, ~60 topics (segment/interval trees, DP, graphs, policy-based structures).
     Part of **~1,875 competitive-programming commits** with the Codeforces/CSES/HackerRank
     archives.
 
+**Also present, deliberately deprioritized — promote any of these if you'd rather.** These are
+mostly 2022–23 university work, ranked below the above because you now have stronger recent
+material; none of them are weak in themselves:
+**Smart GPT** (BUET CSE FEST 2023 hackathon, 24h — generates custom PDFs from text, voice and
+image input; the hackathon result is already in Awards) · **SPL Management System** (365
+commits — Express/Sequelize/MySQL + Redis with a Next.js/MUI front end, used by IIT DU) ·
+**Mini Linkedin** (microservice-based social app, Docker + MinIO + Nginx, distributed-systems
+course) · **Potato Disease Classification** (CNN + FastAPI + React) · **Bangla Text
+Summarizer** (extractive Bangla NLP, Java, 70 commits) · **Gomoku** (minimax with alpha-beta
+pruning) · **blog-verse** (queue-backed NestJS/BullMQ blogging API, 155 commits in 3 weeks) ·
+**Cefalo Blog** (currently under Experience rather than Projects — move it if you prefer).
+
 **Honest framing for open source:** you *maintain* open source (published npm packages,
 public teaching repos) rather than contributing to third-party projects — there are no merged
 PRs to others' repos. Say it the first way; it's accurate and it's the stronger claim anyway.
+
+**Two data conflicts on Beautified You, flagged rather than guessed.** Your portfolio site
+dates it *Mar – Jul 2024* and tags it with *Redux, Redis, Docker*; the repository was created
+2024-05-07 with commits through 2025-04-10, and the API's dependencies contain **no Redis**
+(Redux is front-end, and a Dockerfile does exist). I've used the git dates and dropped the
+Redis claim. Correct me if the site is right.
 
 ---
 
@@ -431,6 +486,17 @@ it. That answer lands far better than a CV that implies otherwise.
    before naming them outside an interview.
 7. **HSC/SSC** — include on the 2-page version or drop? Usually dropped at 2.5 yrs
    experience; the GPAs are strong, so your call.
+8. **Beautified You — Projects or Experience?** It's paid client work, and paid work
+   conventionally belongs under Experience as freelance or contract. I've put it under Projects
+   on both drafts as the safe default, because its span (May 2024 – Apr 2025) overlaps your
+   Cefalo Payroll period, and some employers read concurrent paid work as moonlighting. If
+   you're comfortable with that, promoting it to a "Freelance — Backend Developer" entry makes
+   your experience section materially stronger. Your call, and worth asking your referrer.
+9. **Beautified You dates and stack** — the git history says May 2024 – Apr 2025 while your
+   portfolio site says Mar – Jul 2024, and the site tags Redis, which isn't in the API's
+   dependencies. I used git and dropped Redis. Confirm which is right.
+10. **Other projects** — seven earlier projects are listed but deprioritized in §4. Say the
+    word if you want any promoted onto the drafts.
 
 ---
 
