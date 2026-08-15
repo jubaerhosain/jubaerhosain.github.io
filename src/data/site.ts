@@ -278,7 +278,7 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: 'Backend',
-    items: ['NestJS', 'Express', 'FastAPI', 'REST APIs', 'OpenAPI / Swagger', 'Temporal', 'Kafka'],
+    items: ['NestJS', 'Express', 'FastAPI', 'REST APIs', 'OpenAPI / Swagger'],
   },
   {
     label: 'Frontend',
@@ -302,7 +302,7 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: 'Exploring',
-    items: ['Kubernetes', 'Terraform', 'LangChain / LangGraph', 'RAG & agents'],
+    items: ['Kubernetes', 'Terraform', 'Kafka', 'Temporal', 'LangChain / LangGraph', 'RAG & agents'],
   },
 ];
 
