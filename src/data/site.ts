@@ -47,7 +47,7 @@ export const profileTags = ['TypeScript', 'NestJS', 'PostgreSQL', 'Next.js', 'AW
  * `.highlight` rule in global.css — these are rendered with set:html.
  */
 export const about: string[] = [
-  'I\'m a <span class="highlight">backend-focused fullstack engineer</span> at Cefalo Bangladesh Ltd., where I\'ve spent the last two and a half years on <span class="highlight">Subrite</span> — a multi-tenant subscription and media-monetization platform used by Nordic publishers. It runs to 136 entities and 605 API routes, and I\'ve merged 251 pull requests into it.',
+  'I\'m a <span class="highlight">backend-focused fullstack engineer</span> at Cefalo Bangladesh Ltd., where I\'ve spent the last two and a half years on a <span class="highlight">multi-tenant subscription SaaS</span> for Nordic publishers — 136 entities, 605 API routes, and 251 merged pull requests.',
   'Most of my work sits where correctness matters and mistakes are expensive: the <span class="highlight">tenant-isolation layer</span> that makes multi-tenant safety an enforced guarantee rather than a per-query convention, <span class="highlight">billing correctness</span> across four card providers, and production data migrations where the preview output doubles as the rollback record.',
   'Before that I came up through competitive programming — 1700+ problems, LeetCode Knight. Outside work I publish and maintain open source, and I\'ve been going deeper on <span class="highlight">AWS, Kubernetes, and AI agent systems</span>.',
 ];
@@ -55,7 +55,7 @@ export const about: string[] = [
 /** Cross-cutting narrative — PORTFOLIO.md §5, Thread 1. */
 export const narrative = {
   heading: 'One problem, four codebases',
-  body: 'I first met the request-context problem on Cefalo Payroll — keeping a database transaction coherent when a single business operation spans several services. I used <code>AsyncLocalStorage</code> to fix it there, reached for the same pattern again on Beautified You, then built continuation-local storage into the substrate of Subrite\'s tenant-isolation layer. Having solved it three times, I generalised it and published it: <span class="highlight">nestjs-transactions</span>, a maintained replacement for the unmaintained library everyone had been using. That is the thread I\'d point at first — not any single project, but a problem I kept following until it became something other people could install.',
+  body: 'I first met the request-context problem on Cefalo Payroll — keeping a database transaction coherent when a single business operation spans several services. I used <code>AsyncLocalStorage</code> to fix it there, reached for the same pattern again on Beautified You, then built continuation-local storage into the substrate of the tenant-isolation layer at work. Having solved it three times, I generalised it and published it: <span class="highlight">nestjs-transactions</span>, a maintained replacement for the unmaintained library everyone had been using. That is the thread I\'d point at first — not any single project, but a problem I kept following until it became something other people could install.',
 };
 
 export interface Role {
