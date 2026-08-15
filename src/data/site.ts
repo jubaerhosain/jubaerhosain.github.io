@@ -95,9 +95,7 @@ export const experience: ExperienceEntry[] = [
         bullets: [
           '<span class="highlight">Designed and rolled out multi-tenant isolation</span>, enforcing tenant-scoped data access across the platform after finding and fixing two cross-tenant exposures myself.',
           '<span class="highlight">Improved recurring-payment reliability</span> across Stripe, Vipps, SwedbankPay and Nets by unifying the charge guards each provider had implemented differently, ending a class of incorrect-charge incidents.',
-          'Built operator recovery tooling for the worst case in billing, money debited at the provider with no local record. It matches on provider status and is idempotent, so it cannot double-charge.',
-          'Repaired corrupted billing data in production with a read-only preview, a snapshot table and a transactional apply. It became the template for later data-ops work in the repo.',
-          '<span class="highlight">Owned features end to end</span>, from clarification and planning through deployment, monitoring and hotfix, working directly with the product owner and customer support.',
+          '<span class="highlight">Shipped features end to end</span>, turning a vague requirement into a plan and concrete tasks, then implementing, testing and deploying it and owning the result in production through monitoring, feedback and hotfix.',
         ],
       },
       {
@@ -105,9 +103,7 @@ export const experience: ExperienceEntry[] = [
         period: 'Mar 2025 – Mar 2026',
         bullets: [
           '<span class="highlight">Led onboarding of new tenants</span>, working with technical and non-technical stakeholders to map legacy data and run safe, repeatable migrations.',
-          'Integrated payment providers for new tenants: Stripe, Vipps, Nets, SwedbankPay, and EHF/Avtalegiro e-invoicing.',
-          'Moved tenant configuration from staff-mediated to self-service across settings, branding, communication and payment providers, including per-brand hostname, logo and sender identity.',
-          'Built email infrastructure on SendGrid across four Nordic languages, with hard and soft bounce tracking ordered by event priority so a late event cannot overwrite an earlier one.',
+          '<span class="highlight">Delivered fullstack features</span> across the platform with NestJS and Next.js, from clarifying the requirement and breaking it into tasks through implementation, testing and release.',
           'Carried production hotfix and support-escalation ownership, working directly with the product owner and non-technical customer support.',
         ],
       },
