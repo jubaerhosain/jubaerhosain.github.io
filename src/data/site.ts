@@ -30,11 +30,11 @@ export interface NavItem {
 export const nav: NavItem[] = [
   { label: 'intro', href: '#intro', id: 'intro' },
   { label: 'experience', href: '#experience', id: 'experience' },
-  { label: 'education', href: '#education', id: 'education' },
   { label: 'projects', href: '#projects', id: 'projects' },
+  { label: 'skills', href: '#skills', id: 'skills' },
   { label: 'achievements', href: '#achievements', id: 'achievements' },
   { label: 'courses', href: '#courses', id: 'courses' },
-  { label: 'skills', href: '#skills', id: 'skills' },
+  { label: 'education', href: '#education', id: 'education' },
   { label: 'contact', href: '#contact', id: 'contact' },
 ];
 
@@ -145,7 +145,7 @@ export const education: EducationEntry[] = [
   {
     degree: 'BSc in Software Engineering',
     school: 'Institute of Information Technology, University of Dhaka',
-    period: '2019 – 2023',
+    period: '2019 – 2024',
   },
   {
     degree: 'Higher Secondary School Certificate',

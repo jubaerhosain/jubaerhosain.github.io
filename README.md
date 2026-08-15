@@ -30,9 +30,9 @@ src/
 └─ styles/global.css         @theme tokens (Tailwind 4, CSS-first)
 ```
 
-Sections, in order: `01 Introduction` · `02 Experience` · `03 Education` ·
-`04 Selected Projects` · `05 Achievements` (Online Judges nested) ·
-`06 Courses & Certificates` · `07 Technical Skills` · `08 Get in touch`.
+Sections, in order: `01 Introduction` · `02 Experience` · `03 Selected Projects` ·
+`04 Technical Skills` · `05 Achievements` (Online Judges nested) ·
+`06 Courses & Certificates` · `07 Education` · `08 Get in touch`.
 
 **Section order and numbering come from the `nav` array in `site.ts`.**
 `ui/Section.astro` derives each number from an entry's position there, so
