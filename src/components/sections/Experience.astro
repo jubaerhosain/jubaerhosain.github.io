@@ -1,11 +1,10 @@
 ---
-import { experience, education } from '../../data/site';
+import { experience } from '../../data/site';
 import Section from '../ui/Section.astro';
-import AccentCard from '../ui/AccentCard.astro';
 import Tag from '../ui/Tag.astro';
 ---
 
-<Section id="work" number="02" title="Work Experience">
+<Section id="experience" title="Experience">
   {
     experience.map((job) => (
       <article>
@@ -23,11 +22,11 @@ import Tag from '../ui/Tag.astro';
             ) : (
               job.company
             )}
+            {job.location && (
+              <span class="font-normal text-text-lighter"> · {job.location}</span>
+            )}
           </h3>
-          <p class="font-mono text-xs whitespace-nowrap text-text-lighter">
-            {job.period}
-            {job.location && ` · ${job.location}`}
-          </p>
+          <p class="font-mono text-xs whitespace-nowrap text-text-lighter">{job.period}</p>
         </header>
 
         {job.intro && (
@@ -79,26 +78,4 @@ import Tag from '../ui/Tag.astro';
       </article>
     ))
   }
-
-  <div class="mt-12">
-    <h3 class="mb-6 text-xl font-semibold text-text">Education</h3>
-    <ul class="space-y-6">
-      {
-        education.map((entry) => (
-          <AccentCard as="li">
-            <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-              <h4 class="font-semibold text-text">{entry.degree}</h4>
-              {entry.period && (
-                <p class="font-mono text-xs whitespace-nowrap text-text-lighter">{entry.period}</p>
-              )}
-            </div>
-            <p class="mt-1 text-sm text-text-light">
-              {entry.school}
-              {entry.note && <span class="text-text-lighter"> · {entry.note}</span>}
-            </p>
-          </AccentCard>
-        ))
-      }
-    </ul>
-  </div>
 </Section>

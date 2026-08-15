@@ -1,18 +1,28 @@
 ---
-/** Numbered section wrapper — `01.` in mono + title, matching the reference. */
+import { nav } from '../../data/site';
+
+/**
+ * Numbered section wrapper — `01.` in mono + title, matching the reference.
+ *
+ * The number is derived from the section's position in `nav`, so ordering
+ * lives in one place: reorder `nav` and `index.astro`, and the numbering
+ * follows. Sections absent from `nav` render without a number.
+ */
 interface Props {
   id: string;
-  number: string;
   title: string;
   last?: boolean;
 }
 
-const { id, number, title, last = false } = Astro.props;
+const { id, title, last = false } = Astro.props;
+
+const index = nav.findIndex((item) => item.id === id);
+const number = index === -1 ? null : String(index + 1).padStart(2, '0');
 ---
 
 <section id={id} class={last ? '' : 'mb-12 pb-12'}>
   <div class="mb-8 flex items-center gap-4">
-    <span class="font-mono text-xl font-bold text-primary">{number}.</span>
+    {number && <span class="font-mono text-xl font-bold text-primary">{number}.</span>}
     <h2 class="text-2xl font-bold tracking-tight text-text sm:text-[1.75rem]">{title}</h2>
   </div>
   <slot />

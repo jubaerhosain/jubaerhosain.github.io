@@ -22,11 +22,18 @@ export interface NavItem {
   id: string;
 }
 
+/**
+ * Section order — the single source of truth. `ui/Section.astro` derives each
+ * section's number from an entry's position here, so reordering means editing
+ * this array and `pages/index.astro`, nothing else.
+ */
 export const nav: NavItem[] = [
   { label: 'intro', href: '#intro', id: 'intro' },
-  { label: 'work', href: '#work', id: 'work' },
+  { label: 'experience', href: '#experience', id: 'experience' },
+  { label: 'education', href: '#education', id: 'education' },
   { label: 'projects', href: '#projects', id: 'projects' },
   { label: 'achievements', href: '#achievements', id: 'achievements' },
+  { label: 'courses', href: '#courses', id: 'courses' },
   { label: 'skills', href: '#skills', id: 'skills' },
   { label: 'contact', href: '#contact', id: 'contact' },
 ];
@@ -398,6 +405,97 @@ export const achievements: Achievement[] = [
   { title: 'BUET CSE FEST Hackathon', placement: 'Onsite finalist', year: '2023' },
   { title: 'Meta Hacker Cup', placement: 'Round 2 qualifier', year: '2023' },
   { title: 'Code Samurai Inter-University Hackathon', placement: 'Round 2', year: '2024' },
+];
+
+/**
+ * Course completions and skill certificates.
+ *
+ * Wording rule, from CV-MASTER.md §8 and the note in portfolio-context/latex/
+ * resume.tex: the AWS entries are Udemy *course completions*, not the proctored
+ * DVA-C02 / SAA-C03 exams. "AWS Certified …" appears only as part of a Udemy
+ * course title, always next to `Udemy` as the provider — never as a credential
+ * held. Do not relabel these as certifications.
+ */
+export const coursesLead =
+  'Course completions and skill certificates, each linked to its credential. The AWS entries are <span class="highlight">Udemy course completions</span> — not the proctored AWS exams.';
+
+export interface Course {
+  name: string;
+  provider: string;
+  year?: string;
+  url: string;
+}
+
+export const courses: Course[] = [
+  {
+    name: 'Ultimate AWS Certified Developer Associate 2026 (DVA-C02)',
+    provider: 'Udemy',
+    year: '2026',
+    url: 'https://www.udemy.com/certificate/UC-5644d052-45a5-420b-9888-cea3973fc3d0/',
+  },
+  {
+    name: 'Ultimate AWS Certified Solutions Architect Associate 2026',
+    provider: 'Udemy',
+    year: '2026',
+    url: 'https://www.udemy.com/certificate/UC-b2345c4a-fb8f-46f5-a08d-db30bcf0c2b6/',
+  },
+  {
+    name: 'Building with the Claude API',
+    provider: 'Anthropic',
+    url: 'https://verify.skilljar.com/c/uqss9jm5tspk',
+  },
+  {
+    name: 'Mastering DevOps: From Fundamentals to Advanced Practices',
+    provider: 'Ostad',
+    url: 'https://ostad.app/share/certificate/c38498-md.-jubaer-hosain',
+  },
+  {
+    name: 'React Native – The Practical Guide',
+    provider: 'Udemy',
+    url: 'https://www.udemy.com/certificate/UC-b037a9da-e2db-477e-a7f5-2e28ac2a4c8d/',
+  },
+];
+
+export interface Certificate {
+  name: string;
+  provider: string;
+  logo: string;
+  note?: string;
+  url: string;
+}
+
+export const certificates: Certificate[] = [
+  {
+    name: 'Problem Solving (Intermediate)',
+    provider: 'HackerRank',
+    logo: '/images/hackerrank.png',
+    url: 'https://www.hackerrank.com/certificates/c2575c2203f8',
+  },
+  {
+    name: 'Problem Solving (Basic)',
+    provider: 'HackerRank',
+    logo: '/images/hackerrank.png',
+    url: 'https://www.hackerrank.com/certificates/87843725b00c',
+  },
+  {
+    name: 'Java (Basic)',
+    provider: 'HackerRank',
+    logo: '/images/hackerrank.png',
+    url: 'https://www.hackerrank.com/certificates/4c24a51c3350',
+  },
+  {
+    name: 'JavaScript (Basic)',
+    provider: 'HackerRank',
+    logo: '/images/hackerrank.png',
+    url: 'https://www.hackerrank.com/certificates/41cbc875ba8a',
+  },
+  {
+    name: "February Circuits '23",
+    provider: 'HackerEarth',
+    logo: '/images/hackerearth.png',
+    note: 'Participation',
+    url: 'https://drive.google.com/file/d/1GWmv8T1NP-6SlAzSYqf1Ze5Q70r8-tAI/view',
+  },
 ];
 
 export const contact = {

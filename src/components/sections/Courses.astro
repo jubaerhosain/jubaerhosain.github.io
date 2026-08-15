@@ -1,0 +1,65 @@
+---
+import { courses, certificates, coursesLead } from '../../data/site';
+import Section from '../ui/Section.astro';
+import HoverCard from '../ui/HoverCard.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="courses" title="Courses & Certificates">
+  <p class="mb-8 max-w-3xl text-text-light" set:html={coursesLead} />
+
+  <ul class="grid gap-6 lg:grid-cols-2">
+    {
+      courses.map((course) => (
+        <HoverCard as="li" class="flex flex-col">
+          <h3 class="text-lg font-semibold text-text">{course.name}</h3>
+          <p class="mt-1 font-mono text-xs text-text-lighter">
+            {course.provider}
+            {course.year && ` · ${course.year}`}
+          </p>
+          <a
+            href={course.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center gap-2 self-start pt-4 font-mono text-xs text-primary transition hover:underline hover:underline-offset-2"
+          >
+            View credential
+            <Icon name="external" class="h-3.5 w-3.5" />
+          </a>
+        </HoverCard>
+      ))
+    }
+  </ul>
+
+  <div class="mt-12">
+    <h3 class="mb-6 text-xl font-semibold text-text">Skill Certificates</h3>
+    <ul class="grid grid-cols-[repeat(auto-fill,minmax(13rem,1fr))] gap-6">
+      {
+        certificates.map((certificate) => (
+          <HoverCard as="li" lift="lg" class="!p-0">
+            <a
+              href={certificate.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-full flex-col items-center gap-2 p-6 text-center"
+            >
+              <img
+                src={certificate.logo}
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                class="h-12 w-12 object-contain"
+              />
+              <span class="text-sm font-semibold text-balance text-text">{certificate.name}</span>
+              <span class="font-mono text-xs text-primary">{certificate.provider}</span>
+              {certificate.note && (
+                <span class="text-xs text-text-lighter">{certificate.note}</span>
+              )}
+            </a>
+          </HoverCard>
+        ))
+      }
+    </ul>
+  </div>
+</Section>

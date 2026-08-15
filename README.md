@@ -30,15 +30,27 @@ src/
 └─ styles/global.css         @theme tokens (Tailwind 4, CSS-first)
 ```
 
-Sections, in order: `01 Introduction` · `02 Work Experience` (Education nested) ·
-`03 Selected Projects` · `04 Achievements` (Online Judges nested) ·
-`05 Technical Skills` · `06 Get in touch`.
+Sections, in order: `01 Introduction` · `02 Experience` · `03 Education` ·
+`04 Selected Projects` · `05 Achievements` (Online Judges nested) ·
+`06 Courses & Certificates` · `07 Technical Skills` · `08 Get in touch`.
+
+**Section order and numbering come from the `nav` array in `site.ts`.**
+`ui/Section.astro` derives each number from an entry's position there, so
+reordering or inserting a section means editing `nav` and `pages/index.astro` —
+nothing else. A section whose `id` is absent from `nav` renders unnumbered.
 
 ## Editing content
 
 Everything user-visible lives in `src/data/site.ts`. A few fields are rendered
 with `set:html` so they can carry `<span class="highlight">` emphasis and
-`<code>`: `about`, `narrative.body`, `achievementsLead`, and experience bullets.
+`<code>`: `about`, `narrative.body`, `achievementsLead`, `coursesLead`, and
+experience bullets.
+
+**Wording rule for `courses`.** The AWS entries are Udemy *course completions*,
+not the proctored DVA-C02 / SAA-C03 exams. "AWS Certified …" may appear only as
+part of a verbatim Udemy course title, always alongside `Udemy` as the visible
+provider — never as a credential held. See `CV-MASTER.md` §8 and the note in
+`portfolio-context/latex/resume.tex`.
 
 `public/files/jubaer-hosain-cv.pdf` is the CV linked from the sidebar and the
 mobile header.
