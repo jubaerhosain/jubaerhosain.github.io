@@ -315,7 +315,15 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: 'Exploring',
-    items: ['Kubernetes', 'Terraform', 'Kafka', 'Temporal', 'LangChain / LangGraph', 'RAG & agents'],
+    items: [
+      'Kubernetes',
+      'Terraform',
+      'Kafka',
+      'Temporal',
+      'LangChain / LangGraph',
+      'MCP (Model Context Protocol)',
+      'RAG & agents',
+    ],
   },
 ];
 
