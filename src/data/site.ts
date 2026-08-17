@@ -58,7 +58,7 @@ export const profileTags = ['TypeScript', 'NestJS', 'PostgreSQL', 'Next.js', 'AW
  * appears further down the page in Projects or Skills.
  */
 export const about: string[] = [
-  'I\'m a <span class="highlight">backend-focused fullstack engineer</span> at Cefalo Bangladesh Ltd., working on a <span class="highlight">multi-tenant subscription SaaS</span> for Nordic publishers. Most of my work sits where correctness is expensive: tenant isolation, billing across four card providers, and production data migrations. Before that I came up through competitive programming, 1700+ problems solved and LeetCode Knight.',
+  'I\'m a <span class="highlight">backend-focused fullstack engineer</span> at Cefalo Bangladesh Ltd., working on a <span class="highlight">multi-tenant subscription SaaS</span> for Nordic publishers. Most of my work sits where correctness is expensive: tenant isolation, billing across four card providers, and production data migrations. Before that I came up through competitive programming, 1700+ problems solved and LeetCode Knight. What pulls me now is <span class="highlight">system design</span>: how services should be split and what each boundary costs.',
 ];
 
 export interface Role {
@@ -213,7 +213,8 @@ export const projects: Project[] = [
     date: 'Jul 2024 – Jan 2025',
     tags: ['NestJS', 'MongoDB', 'Next.js', 'FastAPI', 'scikit-learn', 'Ollama'],
     description:
-      'A commerce platform built as five independently deployable services, used as a vehicle for learning breadth. A NestJS core API integrating SSLCommerz, a Next.js storefront and admin, an Expo mobile app, a FastAPI recommender trained with scikit-learn, and an LLM shopping assistant on a fine-tuned Mistral.',
+      'A commerce platform built around a NestJS and MongoDB core API integrating SSLCommerz, a Next.js storefront and admin, and a FastAPI recommender trained with scikit-learn, plus a fine-tuning experiment on Mistral. Split into separately deployable services to work out where boundaries belong, which taught me more about what a boundary costs than reading about it would have.',
+    featured: true,
   },
   {
     name: 'Cefalo Blog',
@@ -281,6 +282,18 @@ export const skills: { label: string; items: string[] }[] = [
     items: ['NestJS', 'Express', 'FastAPI', 'REST APIs', 'OpenAPI / Swagger'],
   },
   {
+    label: 'Architecture & System Design',
+    items: [
+      'Multi-tenant architecture',
+      'Microservices',
+      'Event-driven / async messaging',
+      'Idempotency',
+      'Caching',
+      'API design',
+      'Database design',
+    ],
+  },
+  {
     label: 'Frontend',
     items: ['React', 'Next.js', 'React Native / Expo', 'Redux Toolkit', 'Tailwind CSS'],
   },
@@ -298,7 +311,7 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: 'CS Fundamentals',
-    items: ['Data Structures & Algorithms', 'System Design', 'Database Design', 'OOP'],
+    items: ['Data Structures & Algorithms', 'OOP'],
   },
   {
     label: 'Exploring',
@@ -486,7 +499,7 @@ export const certificates: Certificate[] = [
 
 export const contact = {
   heading: 'Get in touch',
-  body: 'Happy to talk about backend architecture, multi-tenancy, billing systems, or interesting problems generally. Email is the fastest way to reach me.',
+  body: 'Happy to talk about system design, backend architecture, multi-tenancy, billing systems, or interesting problems generally. Email is the fastest way to reach me.',
 };
 
 export interface ContactItem {
