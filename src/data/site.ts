@@ -47,7 +47,7 @@ export const stats: { value: string; label: string }[] = [
 ];
 
 /** Short tech pills shown on the intro profile card. */
-export const profileTags = ['TypeScript', 'NestJS', 'PostgreSQL', 'Next.js', 'AWS', 'Docker'];
+export const profileTags = ['TypeScript', 'ExpressJS', 'NestJS', 'React', 'Next.js', 'PostgreSQL', 'Redis', 'Docker', 'System Design', 'AWS'];
 
 /**
  * Introduction prose, one short paragraph. `<span class="highlight">` marks
@@ -87,7 +87,7 @@ export const experience: ExperienceEntry[] = [
     intro:
       'Subrite, a multi-tenant subscription and media monetization SaaS built for a Nordic client and live in production with publishers.',
     introLink: { label: 'subrite.no', url: 'https://www.subrite.no' },
-    stack: ['NestJS', 'TypeScript', 'React', 'Next.js', 'TypeORM', 'PostgreSQL', 'Redis', 'Queue', 'Temporal', 'Sentry', 'AWS', 'Docker', 'Jest'],
+    stack: ['NestJS', 'TypeScript', 'Next.js', 'TypeORM', 'PostgreSQL', 'Redis', 'Queue', 'Temporal', 'Sentry', 'Jest'],
     roles: [
       {
         title: 'Associate Software Engineer II',
