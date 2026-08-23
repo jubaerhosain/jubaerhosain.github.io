@@ -87,7 +87,7 @@ export const experience: ExperienceEntry[] = [
     intro:
       'Subrite, a multi-tenant subscription and media monetization SaaS built for a Nordic client and live in production with publishers.',
     introLink: { label: 'subrite.no', url: 'https://www.subrite.no' },
-    stack: ['NestJS', 'TypeScript', 'TypeORM', 'PostgreSQL', 'Next.js', 'Temporal', 'Datadog'],
+    stack: ['NestJS', 'TypeScript', 'React', 'Next.js', 'TypeORM', 'PostgreSQL', 'Redis', 'Queue', 'Temporal', 'Sentry', 'AWS', 'Docker', 'Jest'],
     roles: [
       {
         title: 'Associate Software Engineer II',
@@ -307,7 +307,7 @@ export const skills: { label: string; items: string[] }[] = [
   },
   {
     label: 'Testing & Observability',
-    items: ['Jest', 'Testcontainers', 'Playwright', 'Datadog', 'Sentry'],
+    items: ['Jest', 'Testcontainers', 'Playwright', 'Sentry'],
   },
   {
     label: 'CS Fundamentals',
